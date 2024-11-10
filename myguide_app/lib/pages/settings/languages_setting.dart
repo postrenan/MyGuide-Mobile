@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../misc/myguide_appbar.dart';
 
 class LanguageSetting extends StatelessWidget {
   const LanguageSetting({super.key});
@@ -7,15 +8,7 @@ class LanguageSetting extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       // Barra
-      appBar: AppBar(
-        primary: true,
-        title: const Text(
-          'Languages',
-          style: TextStyle(fontSize: 20, color: Colors.white),
-          textAlign: TextAlign.left
-        ),
-        backgroundColor: const Color(0xFF293E56),
-      ),
+      appBar: AppBarTitle.setTitle('Languages'),
 
       // Opciones
       body: Column(

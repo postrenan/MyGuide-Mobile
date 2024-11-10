@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../misc/myguide_appbar.dart';
 
 // settings
 import 'themes_setting.dart';
@@ -12,13 +13,7 @@ class SettingMain extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       // Barra
-      appBar: AppBar(
-        title: const Text(
-          'Settings',
-          style: TextStyle(fontSize: 20, color: Colors.white)
-        ),
-        backgroundColor: const Color(0xFF293E56),
-      ),
+      appBar: AppBarTitle.setTitle('Settings'),
 
       // Opciones
       body: Column(

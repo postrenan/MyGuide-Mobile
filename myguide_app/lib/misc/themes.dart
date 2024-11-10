@@ -9,7 +9,7 @@ class ThemeType {
     onSecondary: Color(0xFFFFFFFF),
     error: Color(0xFFFF0000),
     onError: Color(0xFFFF0000),
-    surface: Color(0xFFFFFFFF),
+    surface: Color(0xFFE8E8E8),
     onSurface: Color(0xFF3F3F3F)
   );
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../misc/myguide_appbar.dart';
 import '../../main.dart';
 
 class ThemeSetting extends StatelessWidget {
@@ -8,15 +9,7 @@ class ThemeSetting extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         // Barra
-        appBar: AppBar(
-          primary: true,
-          title: const Text(
-            'Themes',
-            style: TextStyle(fontSize: 20, color: Colors.white),
-            textAlign: TextAlign.left
-          ),
-          backgroundColor: const Color(0xFF293E56),
-        ),
+        appBar: AppBarTitle.setTitle('Themes'),
 
         // Opciones
         body: Column(

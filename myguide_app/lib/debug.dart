@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 
 import 'pages/login/login.dart';
+import 'pages/login/create_account.dart';
+import 'pages/login/recover_password.dart';
+import 'pages/dashboard/dashboard.dart';
+import 'pages/categories/categories.dart';
+import 'pages/shops/shop_list.dart';
+import 'pages/shops/shop_details.dart';
+import 'pages/shops/shop_favorites.dart';
 import 'pages/settings/settings.dart';
 
 class Debug extends StatelessWidget {
@@ -58,7 +65,7 @@ class Debug extends StatelessWidget {
               style: TextStyle(fontSize: 18)
             ),
             onTap: () {
-              // TODO
+              Navigator.push(context, MaterialPageRoute(builder: (_) => const Dashboard()));
             }
           ),
           
@@ -70,7 +77,7 @@ class Debug extends StatelessWidget {
               style: TextStyle(fontSize: 18)
             ),
             onTap: () {
-              //
+              Navigator.push(context, MaterialPageRoute(builder: (_) => const Categories()));
             }
           ),
           
@@ -82,7 +89,7 @@ class Debug extends StatelessWidget {
               style: TextStyle(fontSize: 18)
             ),
             onTap: () {
-              //
+              Navigator.push(context, MaterialPageRoute(builder: (_) => const ShopList()));
             }
           ),
           
@@ -106,7 +113,7 @@ class Debug extends StatelessWidget {
               style: TextStyle(fontSize: 18)
             ),
             onTap: () {
-              //
+              Navigator.push(context, MaterialPageRoute(builder: (_) => const ShopFavorites()));
             }
           ),
           
