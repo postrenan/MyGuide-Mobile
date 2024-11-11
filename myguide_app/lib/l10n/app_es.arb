@@ -6,6 +6,12 @@
 	"askAccount": "¿No tiene una cuenta?",
 	"createAccount": "Cree una cuenta",
 
+	"passwordForgotTitle": "OLVIDÉ LA CONTRASEÑA",
+	"troubleTitle": "¿Problemas para Iniciar sesión?",
+	"troubleDesc": "Introduce tu correo electrónico y le enviaremos un enlace para restablecer su contraseña.",
+	"resetBtn": "Restablecer Contraseña",
+	"returnBtn": "Volver al Inicio de sesión",
+
 	"searchTxt": "Buscar",
 	"categoriesTxt": "Categorias",
 	"categoriesMore": "Ver más...",

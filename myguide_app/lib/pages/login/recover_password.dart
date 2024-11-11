@@ -1,43 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../models/myguide_appbar.dart';
+
 import 'login.dart';
 
 class RecoverPassword extends StatelessWidget {
+  const RecoverPassword({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // Encabezado
+      appBar: AppBarTitle.setTitle(AppLocalizations.of(context)!.passwordForgotTitle, size: 26, height: 80),
+
+      // Cuerpo de la pantalla
       body: Column(
         children: [
-          // Encabezado
-          ClipRRect(
-            borderRadius: BorderRadius.vertical(bottom: Radius.circular(10)),
-            child: Container(
-              color: Color(0xFF293E56),
-              padding:
-                  EdgeInsets.only(top: 40, bottom: 20, left: 20, right: 20),
-              child: Row(
-                children: [
-                  IconButton(
-                    icon: Icon(Icons.arrow_back, color: Colors.white),
-                    onPressed: () {
-                      Navigator.pushReplacement(context,
-                          MaterialPageRoute(builder: (_) => LoginScreen()));
-                    },
-                  ),
-                  Spacer(),
-                  Text(
-                    'FORGOT PASSWORD',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Spacer(),
-                ],
-              ),
-            ),
-          ),
-          // Cuerpo de la pantalla
+          const SizedBox(height: 100),
+
           Expanded(
             // Usar Expanded para ocupar el espacio restante
             child: SingleChildScrollView(
@@ -45,35 +25,31 @@ class RecoverPassword extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.lock_outline,
                     size: 80,
                     color: Color(0xFFEE9600),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   Text(
-                    'Trouble Logging in?',
-                    style: TextStyle(
+                    AppLocalizations.of(context)!.troubleTitle,
+                    style: const TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
-                      color: Colors.black,
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Text(
-                      "Enter your email and we'll send you a link to reset your password.",
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.black,
-                      ),
+                      AppLocalizations.of(context)!.troubleDesc,
+                      style: const TextStyle(fontSize: 16),
                       textAlign: TextAlign.center,
                     ),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 30),
+                    padding: const EdgeInsets.symmetric(horizontal: 30),
                     child: SizedBox(
                       width: MediaQuery.of(context).size.width * 0.8,
                       child: TextField(
@@ -90,7 +66,7 @@ class RecoverPassword extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.8,
                     child: ElevatedButton(
@@ -98,15 +74,15 @@ class RecoverPassword extends StatelessWidget {
                         // Enviar el enlace de recuperación
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xFFEE9600),
-                        padding: EdgeInsets.symmetric(vertical: 15),
+                        backgroundColor: const Color(0xFFEE9600),
+                        padding: const EdgeInsets.symmetric(vertical: 15),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30),
                         ),
                       ),
                       child: Text(
-                        'Reset Password',
-                        style: TextStyle(
+                        AppLocalizations.of(context)!.resetBtn,
+                        style: const TextStyle(
                             color: Colors.white,
                             fontSize: 20,
                             fontWeight: FontWeight.bold),
@@ -117,19 +93,20 @@ class RecoverPassword extends StatelessWidget {
               ),
             ),
           ),
+          
           // Área inferior que debe estar al fondo
           Container(
-            color: Color(0xFFF2C29D),
+            color: Theme.of(context).brightness == Brightness.light ? const Color(0xFFFFBD8A) : const Color(0xFF895329),
             width: double.infinity,
-            padding: EdgeInsets.symmetric(vertical: 10),
+            padding: const EdgeInsets.symmetric(vertical: 10),
             child: TextButton(
               onPressed: () {
                 Navigator.pushReplacement(
                     context, MaterialPageRoute(builder: (_) => LoginScreen()));
               },
               child: Text(
-                'Return to Login',
-                style: TextStyle(color: Colors.white, fontSize: 20),
+                AppLocalizations.of(context)!.returnBtn,
+                style: const TextStyle(color: Colors.white, fontSize: 20),
               ),
             ),
           ),

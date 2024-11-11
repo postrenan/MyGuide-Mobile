@@ -6,6 +6,12 @@
 	"askAccount": "Don't have an account?",
 	"createAccount": "Create an account",
 
+	"passwordForgotTitle": "FORGOT PASSWORD",
+	"troubleTitle": "Trouble Logging in?",
+	"troubleDesc": "Enter your email and we'll send you a link to reset your password.",
+	"resetBtn": "Reset Password",
+	"returnBtn": "Return to Login",
+
 	"searchTxt": "Search",
 	"categoriesTxt": "Categories",
 	"categoriesMore": "See more...",

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'recover_password.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import 'recover_password.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
@@ -110,9 +111,9 @@ class LoginScreen extends StatelessWidget {
                           MaterialPageRoute(builder: (_) => RecoverPassword()),
                         );
                       },
-                      child: const Text(
-                        'Forgot Password?',
-                        style: TextStyle(color: Color(0xFF42A5F5)),
+                      child: Text(
+                        AppLocalizations.of(context)!.passwordForgot,
+                        style: const TextStyle(color: Color(0xFF42A5F5)),
                       ),
                     ),
                   ),
@@ -142,8 +143,10 @@ class LoginScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(AppLocalizations.of(context)!.askAccount,
-                          style: const TextStyle(color: Color(0xFF000000))),
+                      Text(
+                        AppLocalizations.of(context)!.askAccount,
+                        style: const TextStyle(color: Color(0xFF000000))
+                      ),
                       TextButton(
                         onPressed: () {
                           // Acción crear cuenta

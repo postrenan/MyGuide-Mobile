@@ -32,6 +32,7 @@ class Debug extends StatelessWidget {
               title: const Text('Register', style: TextStyle(fontSize: 18)),
               onTap: () {
                 // TODO
+                Navigator.push(context, MaterialPageRoute(builder: (_) => CreateAccount()));
               }),
           const Divider(),
           ListTile(
@@ -66,7 +67,8 @@ class Debug extends StatelessWidget {
           ListTile(
               title: const Text('Shop Details', style: TextStyle(fontSize: 18)),
               onTap: () {
-                //
+                // TODO
+                Navigator.push(context, MaterialPageRoute(builder: (_) => const ShopDetails()));
               }),
           const Divider(),
           ListTile(

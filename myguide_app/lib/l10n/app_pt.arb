@@ -6,6 +6,12 @@
 	"askAccount": "Não tem uma conta?",
 	"createAccount": "Crie uma conta",
 
+	"passwordForgotTitle": "ESQUECEU A SENHA",
+	"troubleTitle": "Problemas para fazer o login?",
+	"troubleDesc": "Digite seu e-mail e nós lhe enviaremos um link para redefinir sua senha.",
+	"resetBtn": "Redefinir senha",
+	"returnBtn": "Retornar ao login",
+
 	"searchTxt": "Buscar",
 	"categoriesTxt": "Categorias",
 	"categoriesMore": "Ver mais...",
