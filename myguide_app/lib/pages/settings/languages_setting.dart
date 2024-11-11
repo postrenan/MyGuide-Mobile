@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../misc/myguide_appbar.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../models/myguide_appbar.dart';
 
 class LanguageSetting extends StatelessWidget {
   const LanguageSetting({super.key});
@@ -8,7 +9,7 @@ class LanguageSetting extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       // Barra
-      appBar: AppBarTitle.setTitle('Languages'),
+      appBar: AppBarTitle.setTitle(AppLocalizations.of(context)!.langTxt),
 
       // Opciones
       body: Column(
@@ -18,9 +19,9 @@ class LanguageSetting extends StatelessWidget {
             onTap: () {
               //
             },
-            title: const Text(
-              'English',
-              style: TextStyle(fontSize: 18
+            title: Text(
+              AppLocalizations.of(context)!.langEnglish,
+              style: const TextStyle(fontSize: 18
               )
             ),
           ),
@@ -32,9 +33,9 @@ class LanguageSetting extends StatelessWidget {
             onTap: () {
               //
             },
-            title: const Text(
-              'Spanish',
-              style: TextStyle(fontSize: 18
+            title: Text(
+              AppLocalizations.of(context)!.langSpanish,
+              style: const TextStyle(fontSize: 18
               )
             ),
           ),
@@ -46,9 +47,9 @@ class LanguageSetting extends StatelessWidget {
             onTap: () {
               //
             },
-            title: const Text(
-              'Portuguese',
-              style: TextStyle(fontSize: 18
+            title: Text(
+              AppLocalizations.of(context)!.langPortuguese,
+              style: const TextStyle(fontSize: 18
               )
             ),
           ),

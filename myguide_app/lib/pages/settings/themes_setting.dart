@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../misc/myguide_appbar.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../models/myguide_appbar.dart';
 import '../../main.dart';
 
 class ThemeSetting extends StatelessWidget {
@@ -9,7 +10,7 @@ class ThemeSetting extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         // Barra
-        appBar: AppBarTitle.setTitle('Themes'),
+        appBar: AppBarTitle.setTitle(AppLocalizations.of(context)!.themeTxt),
 
         // Opciones
         body: Column(
@@ -19,9 +20,9 @@ class ThemeSetting extends StatelessWidget {
               onTap: () {
                 MyApp.of(context).changeTheme(ThemeMode.system);
               },
-              title: const Text(
-                "System's Theme",
-                style: TextStyle(fontSize: 18)
+              title: Text(
+                AppLocalizations.of(context)!.systemTxt,
+                style: const TextStyle(fontSize: 18)
               ),
             ),
             const Divider(),
@@ -30,9 +31,9 @@ class ThemeSetting extends StatelessWidget {
               onTap: () {
                 MyApp.of(context).changeTheme(ThemeMode.light);
               },
-              title: const Text(
-                'Light Theme',
-                style: TextStyle(fontSize: 18)
+              title: Text(
+                AppLocalizations.of(context)!.lightTxt,
+                style: const TextStyle(fontSize: 18)
               ),
             ),
             const Divider(),
@@ -41,10 +42,9 @@ class ThemeSetting extends StatelessWidget {
               onTap: () {
                 MyApp.of(context).changeTheme(ThemeMode.dark);
               },
-              title: const Text(
-                'Dark Theme',
-                style: TextStyle(fontSize: 18
-                )
+              title: Text(
+                AppLocalizations.of(context)!.darkTxt,
+                style: const TextStyle(fontSize: 18)
               ),
             ),
             const Divider()

@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 import '../../models/myguide_appbar.dart';
 
-class ShopFavorites extends StatelessWidget {
-  const ShopFavorites({super.key});
+class Profile extends StatelessWidget {
+  const Profile({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarTitle.setTitle(AppLocalizations.of(context)!.favoriteTile),
+      appBar: AppBarTitle.setTitle('Profile'),
       body: Container(
         margin: const EdgeInsets.only(top: 20, left: 10, right: 10, bottom: 20),
         decoration: BoxDecoration(
@@ -20,10 +19,23 @@ class ShopFavorites extends StatelessWidget {
         height: MediaQuery.sizeOf(context).height,
         child: Column(
           children: [
-            Text(
-              AppLocalizations.of(context)!.addFavoriteTxt,
-              style: const TextStyle(fontSize: 16)
+            const Text(
+              'Email',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)
             ),
+            ElevatedButton(
+              onPressed: () {
+                //
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.orange[300],
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))
+              ),
+              child: Text(
+                AppLocalizations.of(context)!.logoutTxt,
+                style: const TextStyle(fontSize: 20)
+              ),
+            )
           ]
         )
       )

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -43,9 +44,9 @@ class LoginScreen extends StatelessWidget {
 
                   const SizedBox(height: 10),
                   // Texto del slogan
-                  const Text(
-                    'Find your next souvenir',
-                    style: TextStyle(fontSize: 16, color: Colors.black54),
+                  Text(
+                    AppLocalizations.of(context)!.appSlogan,
+                    style: const TextStyle(fontSize: 16, color: Colors.black54),
                     textAlign: TextAlign.center,
                   ),
                 ],
@@ -87,7 +88,7 @@ class LoginScreen extends StatelessWidget {
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: Colors.white,
-                      hintText: 'Password',
+                      hintText: AppLocalizations.of(context)!.passwordTxt,
                       hintStyle: const TextStyle(color: Color(0xFF000000)),
                       prefixIcon: const Icon(Icons.lock, color: Colors.grey),
                       border: OutlineInputBorder(
@@ -98,11 +99,11 @@ class LoginScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
                   // Texto de "Forgot Password?"
-                  const Align(
+                  Align(
                     alignment: Alignment.centerRight,
                     child: Text(
-                      'Forgot Password?',
-                      style: TextStyle(color: Color(0xFF42A5F5)),
+                      AppLocalizations.of(context)!.passwordForgot,
+                      style: const TextStyle(color: Color(0xFF42A5F5)),
                     ),
                   ),
                   const SizedBox(height: 20),
@@ -118,9 +119,9 @@ class LoginScreen extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(vertical: 15),
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
                       ),
-                      child: const Text(
-                        'Login',
-                        style: TextStyle(fontSize: 18, color: Colors.white),
+                      child: Text(
+                        AppLocalizations.of(context)!.loginTxt,
+                        style: const TextStyle(fontSize: 18, color: Colors.white),
                       ),
                     ),
                   ),
@@ -129,17 +130,17 @@ class LoginScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text(
-                        "Don't have an account?",
-                        style: TextStyle(color: Color(0xFF000000))
+                      Text(
+                        AppLocalizations.of(context)!.askAccount,
+                        style: const TextStyle(color: Color(0xFF000000))
                       ),
                       TextButton(
                         onPressed: () {
                           // Acción para crear cuenta
                         },
-                        child: const Text(
-                          'Create an account',
-                          style: TextStyle(color: Colors.blue),
+                        child: Text(
+                          AppLocalizations.of(context)!.createAccount,
+                          style: const TextStyle(color: Colors.blue),
                         ),
                       ),
                     ],

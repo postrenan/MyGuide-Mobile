@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ShopModel {
   String name;
@@ -13,7 +14,7 @@ class ShopModel {
     required this.favorited
   });
 
-  static Container setShop({String name = '', bool favorited = false}) {
+  static Container setShop(BuildContext context, {String name = '', bool favorited = false}) {
     return Container(
       height: 200,
       width: 200,
@@ -57,10 +58,10 @@ class ShopModel {
                     const SizedBox(height: 20),
 
                     // Categorias
-                    const Text(
-                      'Categories',
+                    Text(
+                      AppLocalizations.of(context)!.categoriesTxt,
                       textAlign: TextAlign.center,
-                      style: TextStyle(color: Color(0xFF3F3F3F)),
+                      style: const TextStyle(color: Color(0xFF3F3F3F)),
                     ),
 
                     // Calificación

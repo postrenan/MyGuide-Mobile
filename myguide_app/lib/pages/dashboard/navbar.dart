@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../models/navbar_tile.dart';
 
+import '../profile/profile.dart';
 import '../shops/shop_list.dart';
 import '../shops/shop_favorites.dart';
 import '../settings/settings.dart';
@@ -16,25 +18,22 @@ class NavBar extends StatelessWidget {
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
-          ListTile(
-            title: const Text('Profile'),
-            onTap: () {
-              //
-            }
-          ),
+          const SizedBox(height: 100),
 
-          NavBarTile.setTile('Shops', context, MaterialPageRoute(builder: (_) => const ShopList())),
+          NavBarTile.setTile(AppLocalizations.of(context)!.profileTile, context, MaterialPageRoute(builder: (_) => const Profile())),
 
-          NavBarTile.setTile('Favorites', context, MaterialPageRoute(builder: (_) => const ShopFavorites())),
+          NavBarTile.setTile(AppLocalizations.of(context)!.shopTile, context, MaterialPageRoute(builder: (_) => const ShopList())),
 
-          ListTile(
-            title: const Text('Reviews'),
-            onTap: () {
-              //
-            }
-          ),
+          NavBarTile.setTile(AppLocalizations.of(context)!.favoriteTile, context, MaterialPageRoute(builder: (_) => const ShopFavorites())),
 
-          NavBarTile.setTile('Settings', context, MaterialPageRoute(builder: (_) => const SettingMain()))
+          // ListTile(
+          //   title: Text(AppLocalizations.of(context)!.reviewTile),
+          //   onTap: () {
+          //     //
+          //   }
+          // ),
+
+          NavBarTile.setTile(AppLocalizations.of(context)!.settingTile, context, MaterialPageRoute(builder: (_) => const SettingMain()))
         ]
       )
     );

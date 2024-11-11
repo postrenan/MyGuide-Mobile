@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import '../../misc/myguide_appbar.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../models/myguide_appbar.dart';
 
 // settings
 import 'themes_setting.dart';
-import 'languages_setting.dart';
+// import 'languages_setting.dart';
 
 
 class SettingMain extends StatelessWidget {
@@ -13,7 +14,7 @@ class SettingMain extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       // Barra
-      appBar: AppBarTitle.setTitle('Settings'),
+      appBar: AppBarTitle.setTitle(AppLocalizations.of(context)!.settingTile),
 
       // Opciones
       body: Column(
@@ -24,24 +25,24 @@ class SettingMain extends StatelessWidget {
             onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (_) => const ThemeSetting()));
             },
-            title: const Text(
-              'Themes',
-              style: TextStyle(fontSize: 18)
+            title: Text(
+              AppLocalizations.of(context)!.themeTxt,
+              style: const TextStyle(fontSize: 18)
             )
             
           ),
           const Divider(),
           // Idiomas
-          ListTile(
+          /*ListTile(
             onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (_) => const LanguageSetting()));
             },
-            title: const Text(
-              'Languages',
-              style: TextStyle(fontSize: 18)
+            title: Text(
+              AppLocalizations.of(context)!.langTxt,
+              style: const TextStyle(fontSize: 18)
             )
           ),
-          const Divider()
+          const Divider()*/
         ]
       )
     );

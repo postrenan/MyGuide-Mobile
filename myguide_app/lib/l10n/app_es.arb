@@ -1,0 +1,35 @@
+{
+	"appSlogan": "Encuentre su próximo souvenir",
+	"passwordTxt": "Contraseña",
+	"passwordForgot": "¿Se olvidó la contraseña?",
+	"loginTxt": "Ingresar",
+	"askAccount": "¿No tiene una cuenta?",
+	"createAccount": "Cree una cuenta",
+
+	"searchTxt": "Buscar",
+	"categoriesTxt": "Categorias",
+	"categoriesMore": "Ver más...",
+	"featuredTxt": "Destacado",
+	
+	"profileTile": "Perfil",
+	"shopTile": "Tiendas",
+	"favoriteTile": "Favoritos",
+	"reviewTile": "Reseñas",
+	"settingTile": "Configuraciones",
+
+	"logoutTxt": "Cerrar sesión",
+
+	"localShopTxt": "Tiendas locales",
+	"addFavoriteTxt": "¡Añade más favoritos!",
+	
+	"themeTxt": "Temas",
+	"systemTxt": "Tema del Sistema",
+	"lightTxt": "Tema Claro",
+	"darkTxt": "Tema Oscuro",
+
+	"langTxt": "Idiomas",
+	"langDefault": "Idioma del Sistema",
+	"langEnglish": "Inglés",
+	"langSpanish": "Español",
+	"langPortuguese": "Portugués"
+}

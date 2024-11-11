@@ -1,0 +1,35 @@
+{
+	"appSlogan": "Find your next souvenir",
+	"passwordTxt": "Password",
+	"passwordForgot": "Forgot Password?",
+	"loginTxt": "Login",
+	"askAccount": "Don't have an account?",
+	"createAccount": "Create an account",
+
+	"searchTxt": "Search",
+	"categoriesTxt": "Categories",
+	"categoriesMore": "See more...",
+	"featuredTxt": "Featured",
+
+	"profileTile": "Profile",
+	"shopTile": "Shops",
+	"favoriteTile": "Favorites",
+	"reviewTile": "Reviews",
+	"settingTile": "Settings",
+
+	"logoutTxt": "log out",
+
+	"localShopTxt": "Local Shops",
+	"addFavoriteTxt": "Add more favorites!",
+
+	"themeTxt": "Themes",
+	"systemTxt": "System's Theme",
+	"lightTxt": "Light Theme",
+	"darkTxt": "Dark Theme",
+	
+	"langTxt": "Languages",
+	"langDefault": "System's Language",
+	"langEnglish": "English",
+	"langSpanish": "Spanish",
+	"langPortuguese": "Portuguese"
+}

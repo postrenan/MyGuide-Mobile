@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../misc/myguide_appbar.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../models/myguide_appbar.dart';
 
 class Categories extends StatelessWidget {
   const Categories({super.key});
@@ -7,7 +8,7 @@ class Categories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarTitle.setTitle('Categories')
+      appBar: AppBarTitle.setTitle(AppLocalizations.of(context)!.categoriesTxt)
     );
   }
 }

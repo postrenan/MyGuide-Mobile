@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 // temas
 import 'misc/themes.dart';
@@ -28,14 +30,22 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       // debugShowCheckedModeBanner: false,
       title: 'MyGuide',
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('en'),
+        Locale('es'),
+        Locale('pt')
+      ],
       theme: ThemeData(
         useMaterial3: true,
-        // brightness: Brightness.light,
         colorScheme: ThemeType.lightMode,
       ),
       darkTheme: ThemeData(
         useMaterial3: true,
-        // brightness: Brightness.dark,
         colorScheme: ThemeType.darkMode,
       ),
       themeMode: _themeMode,

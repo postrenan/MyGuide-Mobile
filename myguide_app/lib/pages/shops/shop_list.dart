@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../misc/myguide_appbar.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../models/myguide_appbar.dart';
 
 import '../../models/shop_model.dart';
 
@@ -9,7 +10,7 @@ class ShopList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarTitle.setTitle('Local Shops'),
+      appBar: AppBarTitle.setTitle(AppLocalizations.of(context)!.localShopTxt),
       body: Container(
         margin: const EdgeInsets.only(top: 20, left: 10, right: 10, bottom: 20),
         
@@ -26,7 +27,7 @@ class ShopList extends StatelessWidget {
           itemBuilder: (context, index) {
             return Padding(
               padding: const EdgeInsets.only(top: 30, left: 24, right: 24, bottom: 30),
-              child: ShopModel.setShop(name: 'Test')
+              child: ShopModel.setShop(context, name: 'Test')
             );
           }
         )
