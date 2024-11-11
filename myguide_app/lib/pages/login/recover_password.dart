@@ -11,7 +11,10 @@ class RecoverPassword extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       // Encabezado
-      appBar: AppBarTitle.setTitle(AppLocalizations.of(context)!.passwordForgotTitle, size: 26, height: 80),
+      appBar: AppBarTitle.setTitle(
+          AppLocalizations.of(context)!.passwordForgotTitle,
+          size: 26,
+          height: 80),
 
       // Cuerpo de la pantalla
       body: Column(
@@ -93,10 +96,12 @@ class RecoverPassword extends StatelessWidget {
               ),
             ),
           ),
-          
+
           // Área inferior que debe estar al fondo
           Container(
-            color: Theme.of(context).brightness == Brightness.light ? const Color(0xFFFFBD8A) : const Color(0xFF895329),
+            color: Theme.of(context).brightness == Brightness.light
+                ? const Color(0xFFFFBD8A)
+                : const Color(0xFF895329),
             width: double.infinity,
             padding: const EdgeInsets.symmetric(vertical: 10),
             child: TextButton(
