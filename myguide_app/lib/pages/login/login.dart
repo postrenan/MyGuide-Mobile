@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'recover_password.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+  LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,8 +14,8 @@ class LoginScreen extends StatelessWidget {
           Container(
             color: const Color(0xFF293E56),
           ),
-          
-          // Fondo blanco con bordes redondeados en la parte inferior
+
+          // Fondo blanco
           Positioned(
             top: 0,
             left: 0,
@@ -23,7 +24,8 @@ class LoginScreen extends StatelessWidget {
               height: MediaQuery.of(context).size.height * 2 / 3,
               decoration: const BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
+                borderRadius:
+                    BorderRadius.vertical(bottom: Radius.circular(20)),
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -101,13 +103,21 @@ class LoginScreen extends StatelessWidget {
                   // Texto de "Forgot Password?"
                   Align(
                     alignment: Alignment.centerRight,
-                    child: Text(
-                      AppLocalizations.of(context)!.passwordForgot,
-                      style: const TextStyle(color: Color(0xFF42A5F5)),
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (_) => RecoverPassword()),
+                        );
+                      },
+                      child: const Text(
+                        'Forgot Password?',
+                        style: TextStyle(color: Color(0xFF42A5F5)),
+                      ),
                     ),
                   ),
                   const SizedBox(height: 20),
-                  // Botón de Login con texto blanco y mayor tamaño
+                  // Botón de Login
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
@@ -117,26 +127,26 @@ class LoginScreen extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFFEE9600),
                         padding: const EdgeInsets.symmetric(vertical: 15),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30)),
                       ),
                       child: Text(
                         AppLocalizations.of(context)!.loginTxt,
-                        style: const TextStyle(fontSize: 18, color: Colors.white),
+                        style:
+                            const TextStyle(fontSize: 18, color: Colors.white),
                       ),
                     ),
                   ),
                   const SizedBox(height: 20),
-                  // Texto "Don't have an account?"
+                  // Texto
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        AppLocalizations.of(context)!.askAccount,
-                        style: const TextStyle(color: Color(0xFF000000))
-                      ),
+                      Text(AppLocalizations.of(context)!.askAccount,
+                          style: const TextStyle(color: Color(0xFF000000))),
                       TextButton(
                         onPressed: () {
-                          // Acción para crear cuenta
+                          // Acción crear cuenta
                         },
                         child: Text(
                           AppLocalizations.of(context)!.createAccount,
