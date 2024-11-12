@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import 'recover_password.dart';
 
 class LoginScreen extends StatelessWidget {
+  LoginScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -8,16 +13,17 @@ class LoginScreen extends StatelessWidget {
         children: [
           // Fondo azul
           Container(
-            color: Color(0xFF293E56),
+            color: const Color(0xFF293E56),
           ),
-          // Fondo blanco con bordes redondeados en la parte inferior
+
+          // Fondo blanco
           Positioned(
             top: 0,
             left: 0,
             right: 0,
             child: Container(
               height: MediaQuery.of(context).size.height * 2 / 3,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.white,
                 borderRadius:
                     BorderRadius.vertical(bottom: Radius.circular(20)),
@@ -27,35 +33,38 @@ class LoginScreen extends StatelessWidget {
                 children: [
                   // Logo cuadrado
                   Image.asset(
-                    'assets/images/logo_square.png',
+                    'assets/images/login/logo_square.png',
                     height: 140,
                     width: 140,
                   ),
-                  SizedBox(height: 10),
+
+                  const SizedBox(height: 10),
                   // Logo del nombre de la aplicación
                   Image.asset(
-                    'assets/images/logo_name.png',
+                    'assets/images/login/logo_name.png',
                     height: 40,
                   ),
-                  SizedBox(height: 10),
+
+                  const SizedBox(height: 10),
                   // Texto del slogan
                   Text(
-                    'Find your next souvenir',
-                    style: TextStyle(fontSize: 16, color: Colors.black54),
+                    AppLocalizations.of(context)!.appSlogan,
+                    style: const TextStyle(fontSize: 16, color: Colors.black54),
                     textAlign: TextAlign.center,
                   ),
                 ],
               ),
             ),
           ),
+
           // Cuadrado anaranjado encima del cambio de fondo
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              margin: EdgeInsets.only(bottom: 60, right: 20, left: 20),
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              margin: const EdgeInsets.only(bottom: 60, right: 20, left: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               decoration: BoxDecoration(
-                color: Color(0xFFDEC29D),
+                color: const Color(0xFFDEC29D),
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Column(
@@ -67,71 +76,84 @@ class LoginScreen extends StatelessWidget {
                       filled: true,
                       fillColor: Colors.white,
                       hintText: 'Email',
-                      prefixIcon: Icon(Icons.person, color: Colors.grey),
+                      hintStyle: const TextStyle(color: Color(0xFF000000)),
+                      prefixIcon: const Icon(Icons.person, color: Colors.grey),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30),
                         borderSide: BorderSide.none,
                       ),
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   // Barra de Password con icono de candado
                   TextField(
                     obscureText: true,
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: Colors.white,
-                      hintText: 'Password',
-                      prefixIcon: Icon(Icons.lock, color: Colors.grey),
+                      hintText: AppLocalizations.of(context)!.passwordTxt,
+                      hintStyle: const TextStyle(color: Color(0xFF000000)),
+                      prefixIcon: const Icon(Icons.lock, color: Colors.grey),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30),
                         borderSide: BorderSide.none,
                       ),
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   // Texto de "Forgot Password?"
                   Align(
                     alignment: Alignment.centerRight,
-                    child: Text(
-                      'Forgot Password?',
-                      style: TextStyle(color: Color(0xFF42A5F5)),
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (_) => RecoverPassword()),
+                        );
+                      },
+                      child: Text(
+                        AppLocalizations.of(context)!.passwordForgot,
+                        style: const TextStyle(color: Color(0xFF42A5F5)),
+                      ),
                     ),
                   ),
-                  SizedBox(height: 20),
-                  // Botón de Login con texto blanco y mayor tamaño
+                  const SizedBox(height: 20),
+                  // Botón de Login
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
                       onPressed: () {
                         // Acción del botón
                       },
-                      child: Text(
-                        'Login',
-                        style: TextStyle(fontSize: 18, color: Colors.white),
-                      ),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xFFEE9600),
-                        padding: EdgeInsets.symmetric(vertical: 15),
+                        backgroundColor: const Color(0xFFEE9600),
+                        padding: const EdgeInsets.symmetric(vertical: 15),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30),
-                        ),
+                            borderRadius: BorderRadius.circular(30)),
+                      ),
+                      child: Text(
+                        AppLocalizations.of(context)!.loginTxt,
+                        style:
+                            const TextStyle(fontSize: 18, color: Colors.white),
                       ),
                     ),
                   ),
-                  SizedBox(height: 20),
-                  // Texto "Don't have an account?"
+                  const SizedBox(height: 20),
+                  // Texto
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("Don't have an account?"),
+                      Text(
+                        AppLocalizations.of(context)!.askAccount,
+                        style: const TextStyle(color: Color(0xFF000000))
+                      ),
                       TextButton(
                         onPressed: () {
-                          // Acción para crear cuenta
+                          // Acción crear cuenta
                         },
                         child: Text(
-                          'Create an account',
-                          style: TextStyle(color: Colors.blue),
+                          AppLocalizations.of(context)!.createAccount,
+                          style: const TextStyle(color: Colors.blue),
                         ),
                       ),
                     ],
