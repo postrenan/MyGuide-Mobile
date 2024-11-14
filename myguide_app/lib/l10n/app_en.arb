@@ -27,6 +27,15 @@
   	"validationDateFormat": "Enter date as YYYY-MM-DD",
   	"validationSelectRole": "Please select a role",
 
+	"shopDetailsTitle": "SHOP DETAILS",
+	"locationTxt": "Location",
+	"productsBtn": "Products",
+	"reviewBtn": "Review It",
+
+	"shopProductsTitle": "Products",
+
+	"shopReviewTitle": "Review",
+
 	"passwordForgotTitle": "FORGOT PASSWORD",
 	"troubleTitle": "Trouble Logging in?",
 	"troubleDesc": "Enter your email and we'll send you a link to reset your password.",
