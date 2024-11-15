@@ -27,7 +27,8 @@ class ShopList extends StatelessWidget {
           itemBuilder: (context, index) {
             return Padding(
               padding: const EdgeInsets.only(top: 30, left: 24, right: 24, bottom: 30),
-              child: ShopModel.setShop(context, name: 'Test')
+              child: ShopModel.setShop(context, name: 'Test', categories: ['game', 'food'])
+              // child: ShopModel.setShop(context, name: 'Test')
             );
           }
         )

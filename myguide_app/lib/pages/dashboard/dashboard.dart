@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../models/category_model.dart';
@@ -23,6 +25,7 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     _getCategories();
+
     return Scaffold(
       endDrawer: const NavBar(),
       appBar: AppBarTitle.setTitle('MyGuide', lead: false),
@@ -103,7 +106,7 @@ class _DashboardState extends State<Dashboard> {
 
                 TextButton(
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (_) => const Categories()));
+                    Navigator.push(context, MaterialPageRoute(builder: (_) => Categories()));
                   },
                   child: Text(
                     AppLocalizations.of(context)!.categoriesMore,
@@ -118,10 +121,19 @@ class _DashboardState extends State<Dashboard> {
           ),
 
           // categorias
-          const Row(
-            children: [
-              // iconos
-            ]
+          SizedBox(
+            width: MediaQuery.sizeOf(context).width - 50,
+            height: 90,
+            child: ListView.builder(
+              itemCount: 4,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) {
+                return IconButton(
+                  onPressed: () => {},
+                  icon: Image.asset(categories[index].image)
+                );
+              }
+            ),
           )
         ]
       ),
