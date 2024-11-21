@@ -1,11 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../misc/environment.dart';
+import 'package:http/http.dart';
 
 import 'recover_password.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   LoginScreen({super.key});
 
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+// Controlador de Login
+TextEditingController emailController = TextEditingController();
+TextEditingController passwordController = TextEditingController();
+
+void login(String email, String password) async {
+  try {
+    Response response = await post(Uri.parse('${Environment.apiUrl}/users'),
+      body: {
+        'email': email,
+        'password': password,
+      }
+    );
+    if (response.statusCode == 200) {
+      print('account logged');
+    } else {
+      print('failed');
+    }
+  } catch (e) {
+    print(e.toString());
+  }
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,6 +102,7 @@ class LoginScreen extends StatelessWidget {
                 children: [
                   // Barra de Email con icono de usuario
                   TextField(
+                    controller: emailController,
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: Colors.white,
@@ -85,8 +116,10 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 10),
+                  
                   // Barra de Password con icono de candado
                   TextField(
+                    controller: passwordController,
                     obscureText: true,
                     decoration: InputDecoration(
                       filled: true,
@@ -101,6 +134,7 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 10),
+                  
                   // Texto de "Forgot Password?"
                   Align(
                     alignment: Alignment.centerRight,
@@ -118,12 +152,14 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 20),
+                  
                   // Botón de Login
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
                       onPressed: () {
                         // Acción del botón
+                        login(emailController.text.toString(), passwordController.text.toString());
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFFEE9600),
