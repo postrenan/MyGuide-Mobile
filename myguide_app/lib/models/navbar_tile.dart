@@ -14,6 +14,7 @@ class NavBarTile {
         )
       ),
       onTap: () {
+        Navigator.of(context).pop();
         Navigator.push(context, route);
       },
       leading: Image.asset(

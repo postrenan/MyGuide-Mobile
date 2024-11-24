@@ -1,6 +1,8 @@
 {
 	"appSlogan": "Encuentre su próximo souvenir",
+	"emailValidate": "Email Inválido",
 	"passwordTxt": "Contraseña",
+	"passwordValidate": "Contraseña Incorrecta",
 	"passwordForgot": "¿Se olvidó la contraseña?",
 	"loginTxt": "Ingresar",
 	"askAccount": "¿No tiene una cuenta?",
