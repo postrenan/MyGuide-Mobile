@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../models/myguide_appbar.dart';
 
-import 'login.dart';
-
 class CreateAccount extends StatelessWidget {
   CreateAccount({super.key});
 
@@ -38,6 +36,7 @@ class CreateAccount extends StatelessWidget {
                     filled: true,
                     fillColor: Colors.white,
                     hintText: AppLocalizations.of(context)!.createNameTxt,
+                    hintStyle: const TextStyle(color: Colors.grey),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
                       borderSide: BorderSide.none,
@@ -58,6 +57,7 @@ class CreateAccount extends StatelessWidget {
                     filled: true,
                     fillColor: Colors.white,
                     hintText: 'Email',
+                    hintStyle: const TextStyle(color: Colors.grey),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
                       borderSide: BorderSide.none,
@@ -81,6 +81,7 @@ class CreateAccount extends StatelessWidget {
                     filled: true,
                     fillColor: Colors.white,
                     hintText: AppLocalizations.of(context)!.createPasswordTxt,
+                    hintStyle: const TextStyle(color: Colors.grey),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
                       borderSide: BorderSide.none,
@@ -106,6 +107,7 @@ class CreateAccount extends StatelessWidget {
                     filled: true,
                     fillColor: Colors.white,
                     hintText: AppLocalizations.of(context)!.repeatPasswordTxt,
+                    hintStyle: const TextStyle(color: Colors.grey),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
                       borderSide: BorderSide.none,
@@ -127,6 +129,7 @@ class CreateAccount extends StatelessWidget {
                     filled: true,
                     fillColor: Colors.white,
                     hintText: AppLocalizations.of(context)!.createBirthdayTxt,
+                    hintStyle: const TextStyle(color: Colors.grey),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
                       borderSide: BorderSide.none,
@@ -150,16 +153,24 @@ class CreateAccount extends StatelessWidget {
                   items: [
                     DropdownMenuItem(
                       value: 'Tourist',
-                      child: Text(AppLocalizations.of(context)!.roleTourist),
+                      child: Text(
+                        AppLocalizations.of(context)!.roleTourist,
+                        style: const TextStyle(color: Colors.grey),
+                      ),
                     ),
                     DropdownMenuItem(
                       value: 'Administrator',
-                      child:
-                          Text(AppLocalizations.of(context)!.roleAdministrator),
+                      child: Text(
+                        AppLocalizations.of(context)!.roleAdministrator,
+                        style: const TextStyle(color: Colors.grey),
+                      ),
                     ),
                     DropdownMenuItem(
                       value: 'Owner Shop',
-                      child: Text(AppLocalizations.of(context)!.roleOwnerShop),
+                      child: Text(
+                        AppLocalizations.of(context)!.roleOwnerShop,
+                        style: const TextStyle(color: Colors.grey),
+                      ),
                     ),
                   ],
                   onChanged: (value) {
@@ -169,11 +180,15 @@ class CreateAccount extends StatelessWidget {
                     filled: true,
                     fillColor: Colors.white,
                     hintText: AppLocalizations.of(context)!.createRoleTxt,
+                    hintStyle: const TextStyle(
+                        color: Colors.grey), // Color gris para el hint
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
                       borderSide: BorderSide.none,
                     ),
                   ),
+                  style: const TextStyle(
+                      color: Colors.grey), // Estilo para el valor seleccionado
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return AppLocalizations.of(context)!.validationSelectRole;

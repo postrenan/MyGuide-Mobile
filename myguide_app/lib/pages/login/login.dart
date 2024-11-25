@@ -4,6 +4,7 @@ import '../../misc/environment.dart';
 import '../../misc/validate.dart';
 import 'package:http/http.dart'; // Para el Response
 import 'dart:convert'; // Para JSON
+import 'package:toastification/toastification.dart'; // Popup Toast [Mensajes de alerta]
 
 import 'recover_password.dart';
 import '../dashboard/dashboard.dart';
@@ -21,46 +22,88 @@ TextEditingController passwordController = TextEditingController();
 
 Future<void> login(BuildContext context, String email, String password) async {
 
-  if (email.isEmpty || password.isEmpty) {
-    print('not valid');
+  if (context.mounted && (email.isEmpty || password.isEmpty)) {
+      toastification.show(
+      context: context,
+      style: ToastificationStyle.flatColored,
+      type: ToastificationType.error,
+      title: const Text('not valid'),
+      autoCloseDuration: const Duration(seconds: 5)
+    );
     return;
   }
 
   try {
     Response response = await get(Uri.parse('${Environment.apiUrl}/users/$email'));
 
-    // TODO: Mostrar mensaje en la aplicación móvil
     // TODO: Funcionalidad de Inicio sesión
 
     if (response.statusCode == 200) {
       var jsonResponse = jsonDecode(response.body);
 
       if (jsonResponse['password'] == password) {
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const Dashboard()));
+        // Inicio de sesión con éxito
+        if (context.mounted) Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const Dashboard()));
+
         await Future.delayed(const Duration(seconds: 2));
+        if (context.mounted) Navigator.of(context).pop();
         emailController.clear();
         passwordController.clear();
-        if (context.mounted) Navigator.of(context).pop();
       } else {
-        print('account not found');
+        // Error de Contraseña
+        if (context.mounted) {
+          toastification.show(
+            context: context,
+            style: ToastificationStyle.flatColored,
+            type: ToastificationType.error,
+            title: const Text('account not found'),
+            autoCloseDuration: const Duration(seconds: 5)
+          );
+        }
       }
     } else {
-      print('failed');
+      if (context.mounted) {
+        // Usuario no encontrado
+        toastification.show(
+          context: context,
+          style: ToastificationStyle.flatColored,
+          type: ToastificationType.error,
+          title: const Text('Failed'),
+          autoCloseDuration: const Duration(seconds: 5)
+        );
+      }
     }
   } catch (e) {
-    print(e.toString());
+    if (context.mounted) {
+      // Error a consultar la API
+      toastification.show(
+        context: context,
+        style: ToastificationStyle.flatColored,
+        title: Text('Error al consultar datos: ${e.toString()}'),
+        autoCloseDuration: const Duration(seconds: 5)
+      );
+    }
   }
 }
 
 class _LoginScreenState extends State<LoginScreen> {
   final _form = GlobalKey<FormState>();
 
-  void _saveForm() {
+  void _saveForm(BuildContext context) {
     // TODO: Mejorar las validaciones de los campos
+
+    // Esconder teclado
+    FocusManager.instance.primaryFocus?.unfocus();
     
     final isValid = _form.currentState!.validate();
     if (!isValid) {
-      print('not valid');
+      toastification.show(
+        context: context,
+        type: ToastificationType.error,
+        style: ToastificationStyle.flatColored,
+        title: const Text('Not valid'),
+        autoCloseDuration: const Duration(seconds: 5)
+      );
       return;
     }
 
@@ -138,9 +181,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       controller: emailController,
                       decoration: InputDecoration(
                         filled: true,
-                        fillColor: Colors.white,
+                        fillColor: Theme.of(context).brightness == Brightness.light ? Colors.white : const Color(0xFF181818),
                         hintText: 'Email',
-                        hintStyle: const TextStyle(color: Color(0xFF000000)),
                         prefixIcon: const Icon(Icons.person, color: Colors.grey),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30),
@@ -164,9 +206,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       obscureText: true,
                       decoration: InputDecoration(
                         filled: true,
-                        fillColor: Colors.white,
+                        fillColor: Theme.of(context).brightness == Brightness.light ? Colors.white : const Color(0xFF181818),
                         hintText: AppLocalizations.of(context)!.passwordTxt,
-                        hintStyle: const TextStyle(color: Color(0xFF000000)),
                         prefixIcon: const Icon(Icons.lock, color: Colors.grey),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30),
@@ -207,7 +248,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: ElevatedButton(
                         onPressed: () {
                           // Acción del botón
-                          _saveForm();
+                          _saveForm(context);
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFFEE9600),
