@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../models/myguide_appbar.dart';
 
+import '../login/login.dart';
+
 class Profile extends StatelessWidget {
   const Profile({super.key});
 
@@ -25,7 +27,8 @@ class Profile extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                //
+                // TODO: Que no se devuelva al Dashboard
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => LoginScreen()));
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.orange[300],

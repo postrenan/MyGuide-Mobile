@@ -6,6 +6,7 @@ import 'package:http/http.dart'; // Para el Response
 import 'dart:convert'; // Para JSON
 
 import 'recover_password.dart';
+import '../dashboard/dashboard.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({super.key});
@@ -18,7 +19,7 @@ class LoginScreen extends StatefulWidget {
 TextEditingController emailController = TextEditingController();
 TextEditingController passwordController = TextEditingController();
 
-Future<void> login(String email, String password) async {
+Future<void> login(BuildContext context, String email, String password) async {
 
   if (email.isEmpty || password.isEmpty) {
     print('not valid');
@@ -35,7 +36,11 @@ Future<void> login(String email, String password) async {
       var jsonResponse = jsonDecode(response.body);
 
       if (jsonResponse['password'] == password) {
-        print('account logged');
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const Dashboard()));
+        await Future.delayed(const Duration(seconds: 2));
+        emailController.clear();
+        passwordController.clear();
+        if (context.mounted) Navigator.of(context).pop();
       } else {
         print('account not found');
       }
@@ -59,7 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
       return;
     }
 
-    login(emailController.text.toString().trim(), passwordController.text.toString().trim());
+    login(context, emailController.text.toString().trim(), passwordController.text.toString().trim());
   }
 
   @override
