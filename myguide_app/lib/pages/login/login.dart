@@ -5,6 +5,9 @@ import '../../misc/validate.dart';
 import 'package:http/http.dart'; // Para el Response
 import 'dart:convert'; // Para JSON
 import 'package:toastification/toastification.dart'; // Popup Toast [Mensajes de alerta]
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+
+import 'dart:math'; // Por mientras
 
 import 'recover_password.dart';
 import '../dashboard/dashboard.dart';
@@ -20,6 +23,8 @@ class LoginScreen extends StatefulWidget {
 TextEditingController emailController = TextEditingController();
 TextEditingController passwordController = TextEditingController();
 
+final storage = FlutterSecureStorage();
+
 Future<void> login(BuildContext context, String email, String password) async {
 
   if (context.mounted && (email.isEmpty || password.isEmpty)) {
@@ -27,7 +32,7 @@ Future<void> login(BuildContext context, String email, String password) async {
       context: context,
       style: ToastificationStyle.flatColored,
       type: ToastificationType.error,
-      title: const Text('not valid'),
+      title: const Text('Not valid'),
       autoCloseDuration: const Duration(seconds: 5)
     );
     return;
@@ -43,7 +48,12 @@ Future<void> login(BuildContext context, String email, String password) async {
 
       if (jsonResponse['password'] == password) {
         // Inicio de sesión con éxito
-        if (context.mounted) Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const Dashboard()));
+
+        // TODO: Hacer uso del Token (y que sea desde la Api)
+        String token = Random().nextInt(10000).toString();
+        await storage.write(key: 'token', value: token);
+        // Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const Dashboard()));
+        if (context.mounted) Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => const Dashboard()), (route) => false);
 
         await Future.delayed(const Duration(seconds: 2));
         if (context.mounted) Navigator.of(context).pop();
@@ -56,7 +66,7 @@ Future<void> login(BuildContext context, String email, String password) async {
             context: context,
             style: ToastificationStyle.flatColored,
             type: ToastificationType.error,
-            title: const Text('account not found'),
+            title: const Text('Account not found'),
             autoCloseDuration: const Duration(seconds: 5)
           );
         }

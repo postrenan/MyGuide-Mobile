@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../models/category_model.dart';
@@ -8,7 +9,7 @@ import '../categories/categories.dart';
 import 'navbar.dart';
 
 class Dashboard extends StatefulWidget {
-  const Dashboard({Key? key}) : super(key: key);
+  const Dashboard({super.key});
 
   @override
   State<Dashboard> createState() => _DashboardState();
@@ -68,9 +69,15 @@ class _DashboardState extends State<Dashboard> {
           filled: true,
           fillColor: Theme.of(context).brightness == Brightness.light ? Colors.white : const Color(0xFF181818),
           contentPadding: const EdgeInsets.all(15),
-          
-          // icono
-          
+          prefixIcon: Padding(
+            padding: const EdgeInsets.all(12),
+            child: SvgPicture.asset(
+              'assets/svg/search.svg',
+              width: 20,
+              height: 20,
+              colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.light ? Colors.grey : Colors.white, BlendMode.srcIn)
+            ),
+          ),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(30),
             borderSide: BorderSide.none

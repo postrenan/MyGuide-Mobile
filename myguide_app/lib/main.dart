@@ -1,4 +1,6 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart'; // Para notificar cambios
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -13,12 +15,14 @@ import 'models/category_model.dart';
 
 Future<void> main() async {
   await dotenv.load();
-  runApp(
-    MultiProvider(
-      providers: [ChangeNotifierProvider(create: (_) => CategoryProvider())],
-      child: MyApp()
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]).then(((_) = {
+    runApp(
+      MultiProvider(
+        providers: [ChangeNotifierProvider(create: (_) => CategoryProvider())],
+        child: MyApp()
+      )
     )
-  );
+  }) as FutureOr Function(void value));
 }
 
 class MyApp extends StatefulWidget {

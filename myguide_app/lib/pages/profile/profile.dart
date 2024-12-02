@@ -27,8 +27,7 @@ class Profile extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                // TODO: Que no se devuelva al Dashboard
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => LoginScreen()));
+                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => LoginScreen()), (route) => false);
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.orange[300],
