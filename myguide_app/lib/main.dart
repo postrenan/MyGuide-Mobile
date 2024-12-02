@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart'; // Para notificar cambios
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -8,10 +9,16 @@ import 'misc/themes.dart';
 
 // import 'pages/login/screen_login.dart';
 import 'debug.dart';
+import 'models/category_model.dart';
 
 Future<void> main() async {
   await dotenv.load();
-  runApp(MyApp());
+  runApp(
+    MultiProvider(
+      providers: [ChangeNotifierProvider(create: (_) => CategoryProvider())],
+      child: MyApp()
+    )
+  );
 }
 
 class MyApp extends StatefulWidget {

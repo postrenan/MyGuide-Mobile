@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../models/category_model.dart';
 import '../../models/myguide_appbar.dart';
@@ -7,23 +8,26 @@ import '../categories/categories.dart';
 import 'navbar.dart';
 
 class Dashboard extends StatefulWidget {
-  const Dashboard({super.key});
+  const Dashboard({Key? key}) : super(key: key);
 
   @override
   State<Dashboard> createState() => _DashboardState();
 }
 
 class _DashboardState extends State<Dashboard> {
-  List<CategoryModel> categories = [];
-
-  void _getCategories() {
-    categories = CategoryModel.getCategories();
+  // Sobreescribir la inicialización del State
+  @override
+  void initState() {
+    super.initState();
+    
+    // Ejecución después de un frame para que cargue sin problemas las categorías por API
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      Provider.of<CategoryProvider>(context, listen: false).fetchCategories();
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    _getCategories();
-
     return Scaffold(
       endDrawer: const NavBar(),
       appBar: AppBarTitle.setTitle('MyGuide', lead: false),
@@ -78,6 +82,8 @@ class _DashboardState extends State<Dashboard> {
 
   // Contenedor Categorias
   Container _categorySection() {
+    var categoryProvider = Provider.of<CategoryProvider>(context);
+    
     return Container(
       margin: const EdgeInsets.only(left: 10, right: 10),
       decoration: BoxDecoration(
@@ -122,13 +128,15 @@ class _DashboardState extends State<Dashboard> {
           SizedBox(
             width: MediaQuery.sizeOf(context).width - 50,
             height: 90,
-            child: ListView.builder(
+            child: categoryProvider.loading | categoryProvider.categories.isEmpty
+            ? const Center(child: CircularProgressIndicator(color: Colors.orange))
+            : ListView.builder(
               itemCount: 4,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
                 return IconButton(
                   onPressed: () => {},
-                  icon: Image.asset(categories[index].image)
+                  icon: Image.asset(categoryProvider.categories[index].image)
                 );
               }
             ),

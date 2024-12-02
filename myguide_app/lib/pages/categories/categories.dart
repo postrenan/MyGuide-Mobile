@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../models/myguide_appbar.dart';
 import '../../models/category_model.dart';
@@ -11,15 +12,20 @@ class Categories extends StatefulWidget {
 }
 
 class _CategoriesState extends State<Categories> {
-  List<CategoryModel> categories = [];
-
-  void _getCategories() {
-    categories = CategoryModel.getCategories();
+  // Sobreescribir la inicialización del State
+  @override
+  void initState() {
+    super.initState();
+    
+    // Ejecución después de un frame para que cargue sin problemas las categorías por API
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      Provider.of<CategoryProvider>(context, listen: false).fetchCategories();
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    _getCategories();
+    var categoryProvider = Provider.of<CategoryProvider>(context);
 
     return Scaffold(
       appBar: AppBarTitle.setTitle(AppLocalizations.of(context)!.categoriesTxt),
@@ -36,15 +42,19 @@ class _CategoriesState extends State<Categories> {
         child: SizedBox(
           width: MediaQuery.sizeOf(context).width - 50,
           height: 10,
-          child: GridView.count(
+          child: categoryProvider.loading
+          ? const Center(child: CircularProgressIndicator(color: Colors.orange))
+          : categoryProvider.categories.isNotEmpty
+          ? GridView.count(
             crossAxisCount: 4, // cantidad de objetos por fila
-            children: List.generate(categories.length, (index) {
+            children: List.generate(categoryProvider.categories.length, (index) {
               return IconButton(
                 onPressed: () => {},
-                icon: Image.asset(categories[index].image)
+                icon: Image.asset(categoryProvider.categories[index].image)
               );
             })
           )
+          : const Center(child: Text('Error'))
         )
       )
     );

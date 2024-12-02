@@ -1,3 +1,9 @@
+import 'package:flutter/material.dart';
+
+import '../../misc/environment.dart';
+import 'package:http/http.dart';
+import 'dart:convert';
+
 class CategoryModel {
   String image;
   // MaterialPageRoute page;
@@ -7,62 +13,42 @@ class CategoryModel {
     // required this.page
   });
 
-  static List<CategoryModel> getCategories() {
-    String mainPath = 'assets/images/categories';
+  static Future<List<CategoryModel>> getCategories() async {
+    String mainPath = 'assets/images/categories/icon_';
     List<CategoryModel> categories = [];
 
-    // TODO: Guardar categorias de la base de datos
+    await Future.delayed(const Duration(seconds: 2));
 
-    // book
-    categories.add(CategoryModel(
-      image: '$mainPath/icon_book.png'
-    ));
+    try {
+      final Response response = await get(Uri.parse('${Environment.apiUrl}/categories'));
+      final List<dynamic> data = jsonDecode(response.body);
 
-    // clothes
-    categories.add(CategoryModel(
-      image: '$mainPath/icon_clothes.png'
-    ));
-
-    // food
-    categories.add(CategoryModel(
-      image: '$mainPath/icon_food.png'
-    ));
-
-    // game
-    categories.add(CategoryModel(
-      image: '$mainPath/icon_game.png'
-    ));
-
-    // gift
-    categories.add(CategoryModel(
-      image: '$mainPath/icon_gift.png'
-    ));
-
-    // hide
-    categories.add(CategoryModel(
-      image: '$mainPath/icon_hide.png'
-    ));
-
-    // jewel
-    categories.add(CategoryModel(
-      image: '$mainPath/icon_jewel.png'
-    ));
-
-    // makeup
-    categories.add(CategoryModel(
-      image: '$mainPath/icon_makeup.png'
-    ));
-
-    // photo
-    categories.add(CategoryModel(
-      image: '$mainPath/icon_photo.png'
-    ));
+      for (var categoryRes in data) {
+        final String category = categoryRes["name"].toString().toLowerCase();
+        if (!categories.contains(CategoryModel(image: '$mainPath$category.png'))) {
+          categories.add(CategoryModel(image: '$mainPath$category.png'));
+        }
+      }
+    } catch (e) {
+      print(e);
+    }
 
     return categories;
   }
+}
 
-  static getCategory(int category) {
-    List<CategoryModel> categories = getCategories();
-    return categories[category];
+class CategoryProvider with ChangeNotifier {
+  List<CategoryModel> _categories = [];
+  bool _loading = false;
+
+  List<CategoryModel> get categories => _categories;
+  bool get loading => _loading;
+
+  void fetchCategories() async {
+    _loading = true;
+    notifyListeners();
+    _categories = await CategoryModel.getCategories();
+    _loading = false;
+    notifyListeners();
   }
 }
