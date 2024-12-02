@@ -37,6 +37,10 @@
 	"productNameTxt": "Nome da Produto",
 
 	"shopReviewTitle": "Avaliação",
+	"shopReviewsHeaderTxt": "Context",
+	"reviewTitleTxt": "Título da Avaliação",
+	"reviewDescriptionTxt": "Descrição",
+	"ratingTxt": "Pontuação",
 
 	"passwordForgotTitle": "ESQUECEU A SENHA",
 	"troubleTitle": "Problemas para fazer o login?",
