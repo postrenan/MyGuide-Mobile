@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../models/loading_model.dart';
 import '../../models/myguide_appbar.dart';
 import '../../models/category_model.dart';
 
@@ -43,7 +44,7 @@ class _CategoriesState extends State<Categories> {
           width: MediaQuery.sizeOf(context).width - 50,
           height: 10,
           child: categoryProvider.loading
-          ? const Center(child: CircularProgressIndicator(color: Colors.orange))
+          ? LoadingModel.set()
           : categoryProvider.categories.isNotEmpty
           ? GridView.count(
             crossAxisCount: 4, // cantidad de objetos por fila

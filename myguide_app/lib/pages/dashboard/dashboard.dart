@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../models/loading_model.dart';
 import '../../models/category_model.dart';
 import '../../models/myguide_appbar.dart';
 
@@ -32,22 +33,24 @@ class _DashboardState extends State<Dashboard> {
     return Scaffold(
       endDrawer: const NavBar(),
       appBar: AppBarTitle.setTitle('MyGuide', lead: false),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // buscador
-          _searchField(),
-
-          const SizedBox(height: 40), // Separación
-          
-          // categorias
-          _categorySection(),
-
-          const SizedBox(height: 60),
-
-          // descatado
-          _featuredSection(context)
-        ]
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // buscador
+            _searchField(),
+        
+            const SizedBox(height: 40), // Separación
+            
+            // categorias
+            _categorySection(),
+        
+            const SizedBox(height: 60),
+        
+            // descatado
+            _featuredSection(context)
+          ]
+        ),
       )
     );
   }
@@ -136,7 +139,7 @@ class _DashboardState extends State<Dashboard> {
             width: MediaQuery.sizeOf(context).width - 50,
             height: 90,
             child: categoryProvider.loading | categoryProvider.categories.isEmpty
-            ? const Center(child: CircularProgressIndicator(color: Colors.orange))
+            ? LoadingModel.set()
             : ListView.builder(
               itemCount: 4,
               scrollDirection: Axis.horizontal,
