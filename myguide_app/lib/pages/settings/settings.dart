@@ -4,6 +4,7 @@ import '../../models/myguide_appbar.dart';
 
 // settings
 import 'themes_setting.dart';
+import 'about_setting.dart';
 // import 'languages_setting.dart';
 
 
@@ -43,6 +44,17 @@ class SettingMain extends StatelessWidget {
             )
           ),
           const Divider()*/
+          // Acerca de
+          ListTile(
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (_) => const AboutSetting()));
+            },
+            title: Text(
+              AppLocalizations.of(context)!.aboutTxt,
+              style: const TextStyle(fontSize: 18)
+            )
+          ),
+          const Divider()
         ]
       )
     );

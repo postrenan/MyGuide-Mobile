@@ -58,9 +58,8 @@ class RecoverPassword extends StatelessWidget {
                       child: TextField(
                         decoration: InputDecoration(
                           filled: true,
-                          fillColor: Colors.white,
+                          fillColor: Theme.of(context).brightness == Brightness.light ? Colors.white : const Color(0xFF181818),
                           hintText: 'Email',
-                          hintStyle: const TextStyle(color: Colors.grey),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30),
                             borderSide: BorderSide.none,

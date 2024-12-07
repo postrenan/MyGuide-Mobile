@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../misc/environment.dart';
 import '../../misc/validate.dart';
@@ -7,7 +8,7 @@ import 'package:http/http.dart'; // Para el Response
 import 'dart:convert'; // Para JSON
 
 import '../../models/myguide_appbar.dart';
-import 'package:MyGuide/pages/login/login.dart';
+import '../login/login.dart';
 
 class CreateAccount extends StatefulWidget {
   CreateAccount({super.key});
@@ -46,7 +47,7 @@ Future<void> create(BuildContext context, String name, String username, String e
     if (response.statusCode == 201 || response.statusCode == 200) {
       // Crear cuenta
       if (context.mounted) {
-        ToastMyGuide.show(context, 'Account created successfuly', type: 'success');
+        ToastMyGuide.show(context, AppLocalizations.of(context)!.toastCreationSuccess, type: 'success');
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => LoginScreen()));
 
         await Future.delayed(const Duration(seconds: 2));
@@ -59,14 +60,14 @@ Future<void> create(BuildContext context, String name, String username, String e
       }
     } else if (response.statusCode == 400) {
       // Error de datos
-      if (context.mounted) ToastMyGuide.show(context, 'Invalid data', type: 'error');
+      if (context.mounted) ToastMyGuide.show(context, AppLocalizations.of(context)!.toastErrorData, type: 'error');
     } else {
       // Error desconocido
       if (context.mounted) ToastMyGuide.show(context, 'Error: ${response.statusCode}', type: 'error');
     }
   } catch (e) {
     // Error a consultar la API
-    if (context.mounted) ToastMyGuide.show(context, 'An error occurred. Please try again', type: 'error');
+    if (context.mounted) ToastMyGuide.show(context, AppLocalizations.of(context)!.toastErrorApi, type: 'error');
   }
 }
 
@@ -109,19 +110,19 @@ class _CreateAccountState extends State<CreateAccount> {
                 const SizedBox(height: 40),
                 Text(
                   AppLocalizations.of(context)!.addYourInfo,
-                  style: const TextStyle(
-                      fontSize: 22, fontWeight: FontWeight.bold),
+                  style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 30),
                 // Campo Name
                 TextFormField(
                   controller: nameController,
+                  inputFormatters: [ FilteringTextInputFormatter.allow(RegExp("[a-zA-Z]")), ],
+                  keyboardType: TextInputType.name,
                   decoration: InputDecoration(
                     filled: true,
-                    fillColor: Colors.white,
+                    fillColor: Theme.of(context).brightness == Brightness.light ? Colors.white : const Color(0xFF181818),
                     hintText: AppLocalizations.of(context)!.createNameTxt,
-                    hintStyle: const TextStyle(color: Colors.grey),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
                       borderSide: BorderSide.none,
@@ -140,9 +141,8 @@ class _CreateAccountState extends State<CreateAccount> {
                   controller: usernameController,
                   decoration: InputDecoration(
                     filled: true,
-                    fillColor: Colors.white,
+                    fillColor: Theme.of(context).brightness == Brightness.light ? Colors.white : const Color(0xFF181818),
                     hintText: AppLocalizations.of(context)!.createUsernameTxt,
-                    hintStyle: const TextStyle(color: Colors.grey),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
                       borderSide: BorderSide.none,
@@ -162,9 +162,8 @@ class _CreateAccountState extends State<CreateAccount> {
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                     filled: true,
-                    fillColor: Colors.white,
+                    fillColor: Theme.of(context).brightness == Brightness.light ? Colors.white : const Color(0xFF181818),
                     hintText: 'Email',
-                    hintStyle: const TextStyle(color: Colors.grey),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
                       borderSide: BorderSide.none,
@@ -187,9 +186,8 @@ class _CreateAccountState extends State<CreateAccount> {
                   obscureText: true,
                   decoration: InputDecoration(
                     filled: true,
-                    fillColor: Colors.white,
+                    fillColor: Theme.of(context).brightness == Brightness.light ? Colors.white : const Color(0xFF181818),
                     hintText: AppLocalizations.of(context)!.createPasswordTxt,
-                    hintStyle: const TextStyle(color: Colors.grey),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
                       borderSide: BorderSide.none,
@@ -212,9 +210,8 @@ class _CreateAccountState extends State<CreateAccount> {
                   obscureText: true,
                   decoration: InputDecoration(
                     filled: true,
-                    fillColor: Colors.white,
+                    fillColor: Theme.of(context).brightness == Brightness.light ? Colors.white : const Color(0xFF181818),
                     hintText: AppLocalizations.of(context)!.repeatPasswordTxt,
-                    hintStyle: const TextStyle(color: Colors.grey),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
                       borderSide: BorderSide.none,
@@ -239,9 +236,8 @@ class _CreateAccountState extends State<CreateAccount> {
                   keyboardType: TextInputType.datetime,
                   decoration: InputDecoration(
                     filled: true,
-                    fillColor: Colors.white,
+                    fillColor: Theme.of(context).brightness == Brightness.light ? Colors.white : const Color(0xFF181818),
                     hintText: AppLocalizations.of(context)!.createBirthdayTxt,
-                    hintStyle: const TextStyle(color: Colors.grey),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
                       borderSide: BorderSide.none,

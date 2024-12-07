@@ -7,10 +7,10 @@
 	"loginTxt": "Iniciar sessão",
 	"askAccount": "Não tem uma conta?",
 	"createAccount": "Crie uma conta",
+	
 	"toastEmptyFields": "Há campos vazios",
 	"toastWrongPass": "Senha incorreta",
 	"toastWrongEmail": "Usuário não encontrado",
-	"toastErrorApi": "Erro ao consultar dados: ",
 
 	"createAccountTitle": "CRIE SUA CONTA",
 	"addYourInfo": "Adicione suas informações",
@@ -34,6 +34,10 @@
   	"validationEnterBirthday": "Digite sua data de nascimento",
   	"validationDateFormat": "Digite a data como AAAA-MM-DD",
   	"validationSelectRole": "Favor selecionar uma função",
+	
+	"toastCreationSuccess": "Conta criada com êxito",
+	"toastErrorData": "Dados inválidos",
+	"toastErrorApi": "Ocorreu um erro. Por favor, tente novamente",
 
 	"shopDetailsTitle": "DETALHES DA LOJA",
 	"locationTxt": "Localização",
@@ -82,5 +86,9 @@
 	"langDefault": "Idioma do sistema",
 	"langEnglish": "Inglês",
 	"langSpanish": "Espanhol",
-	"langPortuguese": "Português"
+	"langPortuguese": "Português",
+
+	"aboutTxt": "Sobre...",
+	"appTxt": "Aplicativo Móvel",
+	"webTxt": "Website + Back-End"
 }

@@ -62,8 +62,10 @@ class _ShopDetailsState extends State<ShopDetails> {
                         IconButton(
                           icon: Image(
                             image: AssetImage(isFavorite
-                                ? 'assets/icon/icon_favorite_color.png'
-                                : 'assets/icon/icon_favorite.png'),
+                                ? 'assets/images/icon_favorite_color.png'
+                                : Theme.of(context).brightness == Brightness.light
+                                ? 'assets/images/icon_favorite_dark.png'
+                                : 'assets/images/icon_favorite.png'),
                             width: 30,
                             height: 30,
                           ),
@@ -84,16 +86,16 @@ class _ShopDetailsState extends State<ShopDetails> {
                         ),
 
                         // Reseña
-                        Row(
+                        const Row(
                           children: [
-                            const Image(
+                            Image(
                               image: AssetImage(
-                                  'assets/icon/icon_review_color.png'),
+                                  'assets/images/icon_review_color.png'),
                               width: 20,
                               height: 20,
                             ),
-                            const SizedBox(width: 5),
-                            const Text(
+                            SizedBox(width: 5),
+                            Text(
                               '3.7', // Placeholder de reseñas
                               style: TextStyle(
                                 fontSize: 16,

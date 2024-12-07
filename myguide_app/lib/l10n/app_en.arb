@@ -7,10 +7,10 @@
 	"loginTxt": "Login",
 	"askAccount": "Don't have an account?",
 	"createAccount": "Create an account",
+	
 	"toastEmptyFields": "There are empty fields",
 	"toastWrongPass": "Wrong password",
 	"toastWrongEmail": "User not found",
-	"toastErrorApi": "Error when querying data: ",
 
 	"createAccountTitle": "CREATE YOUR ACCOUNT",
 	"addYourInfo": "Add your information",
@@ -35,6 +35,10 @@
   	"validationDateFormat": "Enter date as YYYY-MM-DD",
   	"validationSelectRole": "Please select a role",
 
+	"toastCreationSuccess": "Account created successfuly",
+	"toastErrorData": "Invalid data",
+	"toastErrorApi": "An error occurred. Please try again",
+
 	"shopDetailsTitle": "SHOP DETAILS",
 	"locationTxt": "Location",
 	"productsBtn": "Products",
@@ -49,7 +53,6 @@
 	"reviewTitleTxt": "Review Title",
 	"reviewDescriptionTxt": "Description",
 	"ratingTxt": "Rating",
-
 
 	"passwordForgotTitle": "FORGOT PASSWORD",
 	"troubleTitle": "Trouble Logging in?",
@@ -83,5 +86,9 @@
 	"langDefault": "System's Language",
 	"langEnglish": "English",
 	"langSpanish": "Spanish",
-	"langPortuguese": "Portuguese"
+	"langPortuguese": "Portuguese",
+
+	"aboutTxt": "About",
+	"appTxt": "Mobile Application",
+	"webTxt": "Website + Back-End"
 }

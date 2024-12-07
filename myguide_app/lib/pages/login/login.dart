@@ -10,6 +10,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'dart:math'; // Por mientras
 
 import 'recover_password.dart';
+import 'create_account.dart';
 import '../dashboard/dashboard.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -62,7 +63,7 @@ Future<void> login(BuildContext context, String email, String password) async {
     }
   } catch (e) {
     // Error a consultar la API
-    if (context.mounted) ToastMyGuide.show(context, AppLocalizations.of(context)!.toastErrorApi + e.toString(), type: 'error');
+    if (context.mounted) ToastMyGuide.show(context, AppLocalizations.of(context)!.toastErrorApi, type: 'error');
   }
 }
 
@@ -248,6 +249,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         TextButton(
                           onPressed: () {
                             // Acción crear cuenta
+                            Navigator.push(context, MaterialPageRoute(builder: (_) => CreateAccount()));
                           },
                           child: Text(
                             AppLocalizations.of(context)!.createAccount,

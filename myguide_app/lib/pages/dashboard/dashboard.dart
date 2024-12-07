@@ -7,6 +7,7 @@ import '../../models/category_model.dart';
 import '../../models/myguide_appbar.dart';
 
 import '../categories/categories.dart';
+import '../shops/shop_details.dart';
 import 'navbar.dart';
 
 class Dashboard extends StatefulWidget {
@@ -48,7 +49,10 @@ class _DashboardState extends State<Dashboard> {
             const SizedBox(height: 60),
         
             // descatado
-            _featuredSection(context)
+            GestureDetector(
+              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const ShopDetails())),
+              child: _featuredSection(context)
+            )
           ]
         ),
       )
@@ -180,17 +184,32 @@ class _DashboardState extends State<Dashboard> {
             ),
           ),
 
-          Center(
-            heightFactor: 3,
-            child: Text(
-              AppLocalizations.of(context)!.noShops,
-              style: const TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Color(0xFF8B8B8B)
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Imagen
+              Container(
+                margin: const EdgeInsets.only(top: 10, left: 20),
+                width: MediaQuery.sizeOf(context).width - 60,
+                height: 200,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/shops/placeholder.jpg'),
+                    fit: BoxFit.cover
+                  )
+                )
               ),
-              textAlign: TextAlign.center,
-            )
+          
+              // Descripción
+              Padding(
+                padding: const EdgeInsets.only(top: 5, left: 20),
+                child: Text(
+                  'No description available.',
+                  style: TextStyle(fontSize: 16),
+                  textAlign: TextAlign.left
+                )
+              )
+            ]
           )
         ]
       )

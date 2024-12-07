@@ -10,8 +10,9 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 // temas
 import 'misc/themes.dart';
 
-// import 'pages/login/screen_login.dart';
+import 'pages/login/login.dart';
 import 'debug.dart';
+
 import 'models/category_model.dart';
 
 Future<void> main() async {
@@ -63,8 +64,7 @@ class _MyAppState extends State<MyApp> {
         colorScheme: ThemeType.darkMode,
       ),
       themeMode: _themeMode,
-      // home: const LoginScreen(), // Cargará directamente la pantalla de inicio de sesión
-      home: const Debug(),
+      home: kDebugMode ? const Debug() : LoginScreen(),
     );
   }
 
