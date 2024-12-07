@@ -20,6 +20,8 @@ class ShopFavorites extends StatelessWidget {
         height: MediaQuery.sizeOf(context).height,
         child: Column(
           children: [
+            const SizedBox(height: 10),
+
             Text(
               AppLocalizations.of(context)!.addFavoriteTxt,
               style: const TextStyle(fontSize: 16)

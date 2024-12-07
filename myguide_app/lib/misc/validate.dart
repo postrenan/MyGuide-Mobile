@@ -12,4 +12,16 @@ class Validate {
 
     return email!.isNotEmpty && !regex.hasMatch(email) ? 'error' : null;
   }
+  
+  static String? password(String? password) {
+    return password!.isNotEmpty && password.length < 6 ? 'error' : null;
+  }
+
+  static String? date(String? date) {
+    const pattern = r'^\d{4}-\d{2}-\d{2}$';
+
+    final regex = RegExp(pattern);
+
+    return date!.isNotEmpty && !regex.hasMatch(date) ? 'error' : null;
+  }
 }

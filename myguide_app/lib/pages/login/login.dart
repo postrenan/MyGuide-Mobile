@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../misc/environment.dart';
 import '../../misc/validate.dart';
+import '../../misc/toast_myguide.dart'; // Popup Toast
 import 'package:http/http.dart'; // Para el Response
 import 'dart:convert'; // Para JSON
-import 'package:toastification/toastification.dart'; // Popup Toast [Mensajes de alerta]
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import 'dart:math'; // Por mientras
@@ -28,13 +28,7 @@ final storage = FlutterSecureStorage();
 Future<void> login(BuildContext context, String email, String password) async {
 
   if (context.mounted && (email.isEmpty || password.isEmpty)) {
-      toastification.show(
-      context: context,
-      style: ToastificationStyle.flatColored,
-      type: ToastificationType.error,
-      title: const Text('Not valid'),
-      autoCloseDuration: const Duration(seconds: 5)
-    );
+    ToastMyGuide.show(context, AppLocalizations.of(context)!.toastEmptyFields, type: 'error');
     return;
   }
 
@@ -52,7 +46,6 @@ Future<void> login(BuildContext context, String email, String password) async {
         // TODO: Hacer uso del Token (y que sea desde la Api)
         String token = Random().nextInt(10000).toString();
         await storage.write(key: 'token', value: token);
-        // Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const Dashboard()));
         if (context.mounted) Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => const Dashboard()), (route) => false);
 
         await Future.delayed(const Duration(seconds: 2));
@@ -61,43 +54,20 @@ Future<void> login(BuildContext context, String email, String password) async {
         passwordController.clear();
       } else {
         // Error de Contraseña
-        if (context.mounted) {
-          toastification.show(
-            context: context,
-            style: ToastificationStyle.flatColored,
-            type: ToastificationType.error,
-            title: const Text('Account not found'),
-            autoCloseDuration: const Duration(seconds: 5)
-          );
-        }
+        if (context.mounted) ToastMyGuide.show(context, AppLocalizations.of(context)!.toastWrongPass, type: 'error');
       }
     } else {
-      if (context.mounted) {
-        // Usuario no encontrado
-        toastification.show(
-          context: context,
-          style: ToastificationStyle.flatColored,
-          type: ToastificationType.error,
-          title: const Text('Failed'),
-          autoCloseDuration: const Duration(seconds: 5)
-        );
-      }
+      // Usuario no encontrado
+      if (context.mounted) ToastMyGuide.show(context, AppLocalizations.of(context)!.toastWrongEmail, type: 'error');
     }
   } catch (e) {
-    if (context.mounted) {
-      // Error a consultar la API
-      toastification.show(
-        context: context,
-        style: ToastificationStyle.flatColored,
-        title: Text('Error al consultar datos: ${e.toString()}'),
-        autoCloseDuration: const Duration(seconds: 5)
-      );
-    }
+    // Error a consultar la API
+    if (context.mounted) ToastMyGuide.show(context, AppLocalizations.of(context)!.toastErrorApi + e.toString(), type: 'error');
   }
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final _form = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
 
   void _saveForm(BuildContext context) {
     // TODO: Mejorar las validaciones de los campos
@@ -105,15 +75,9 @@ class _LoginScreenState extends State<LoginScreen> {
     // Esconder teclado
     FocusManager.instance.primaryFocus?.unfocus();
     
-    final isValid = _form.currentState!.validate();
+    final isValid = _formKey.currentState!.validate();
     if (!isValid) {
-      toastification.show(
-        context: context,
-        type: ToastificationType.error,
-        style: ToastificationStyle.flatColored,
-        title: const Text('Not valid'),
-        autoCloseDuration: const Duration(seconds: 5)
-      );
+      // ToastMyGuide.show(context, 'Not valid', type: 'error');
       return;
     }
 
@@ -182,13 +146,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Form(
-                key: _form,
+                key: _formKey,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     // Barra de Email con icono de usuario
                     TextFormField(
                       controller: emailController,
+                      keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: Theme.of(context).brightness == Brightness.light ? Colors.white : const Color(0xFF181818),
@@ -205,8 +170,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           return AppLocalizations.of(context)!.emailValidate;
                         }
                         return null;
-                      },
-                      autovalidateMode: AutovalidateMode.onUserInteraction
+                      }
                     ),
                     const SizedBox(height: 10),
                     
@@ -229,8 +193,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           return AppLocalizations.of(context)!.passwordValidate;
                         }
                         return null;
-                      },
-                      autovalidateMode: AutovalidateMode.onUserInteraction
+                      }
                     ),
                     const SizedBox(height: 10),
                     

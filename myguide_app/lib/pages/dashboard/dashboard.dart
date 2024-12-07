@@ -178,6 +178,19 @@ class _DashboardState extends State<Dashboard> {
                 fontWeight: FontWeight.bold
               )
             ),
+          ),
+
+          Center(
+            heightFactor: 3,
+            child: Text(
+              AppLocalizations.of(context)!.noShops,
+              style: const TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF8B8B8B)
+              ),
+              textAlign: TextAlign.center,
+            )
           )
         ]
       )
