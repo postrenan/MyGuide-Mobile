@@ -1,4 +1,9 @@
+import 'dart:async';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:provider/provider.dart'; // Para notificar cambios
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -7,9 +12,18 @@ import 'misc/themes.dart';
 
 // import 'pages/login/screen_login.dart';
 import 'debug.dart';
+import 'models/category_model.dart';
 
-void main() {
-  runApp(MyApp());
+Future<void> main() async {
+  await dotenv.load();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]).then(((_) = {
+    runApp(
+      MultiProvider(
+        providers: [ChangeNotifierProvider(create: (_) => CategoryProvider())],
+        child: MyApp()
+      )
+    )
+  }) as FutureOr Function(void value));
 }
 
 class MyApp extends StatefulWidget {
@@ -28,7 +42,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: kDebugMode,
       title: 'MyGuide',
       localizationsDelegates: const [
         AppLocalizations.delegate,
