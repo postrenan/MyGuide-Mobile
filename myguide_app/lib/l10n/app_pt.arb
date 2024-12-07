@@ -27,6 +27,21 @@
   	"validationDateFormat": "Digite a data como AAAA-MM-DD",
   	"validationSelectRole": "Favor selecionar uma função",
 
+	"shopDetailsTitle": "DETALHES DA LOJA",
+	"locationTxt": "Localização",
+	"productsBtn": "Produtos",
+	"reviewBtn": "Avaliação",
+
+	"shopProductsTitle": "Produtos",
+	"shopProductsHeaderTxt": "Context",
+	"productNameTxt": "Nome da Produto",
+
+	"shopReviewTitle": "Avaliação",
+	"shopReviewsHeaderTxt": "Context",
+	"reviewTitleTxt": "Título da Avaliação",
+	"reviewDescriptionTxt": "Descrição",
+	"ratingTxt": "Pontuação",
+
 	"passwordForgotTitle": "ESQUECEU A SENHA",
 	"troubleTitle": "Problemas para fazer o login?",
 	"troubleDesc": "Digite seu e-mail e nós lhe enviaremos um link para redefinir sua senha.",

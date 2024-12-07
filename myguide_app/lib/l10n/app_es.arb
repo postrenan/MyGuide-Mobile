@@ -27,6 +27,21 @@
   	"validationDateFormat": "Ingrese la fecha como AAAA-MM-DD",
   	"validationSelectRole": "Por favor, seleccione un rol",
 
+	"shopDetailsTitle": "DETALLES DE TIENDA",
+	"locationTxt": "Ubicación",
+	"productsBtn": "Productos",
+	"reviewBtn": "Reseñar",
+
+	"shopProductsTitle": "Productos",
+	"shopProductsHeaderTxt": "Context",
+	"productNameTxt": "Nombre del Producto",
+
+	"shopReviewTitle": "Reseña",
+	"shopReviewsHeaderTxt": "Context",
+	"reviewTitleTxt": "Título de Reseña",
+	"reviewDescriptionTxt": "Descripción",
+	"ratingTxt": "Rating",
+
 	"passwordForgotTitle": "OLVIDÉ LA CONTRASEÑA",
 	"troubleTitle": "¿Problemas para Iniciar sesión?",
 	"troubleDesc": "Introduce tu correo electrónico y le enviaremos un enlace para restablecer su contraseña.",
