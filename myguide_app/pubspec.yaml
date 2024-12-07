@@ -75,6 +75,8 @@ flutter:
     - assets/icon/
     - assets/images/
     - assets/shops/
+    - assets/images/categories/
+    - assets/images/login/
     - assets/images/login/logo_square.png
     - assets/images/login/logo_name.png
     - .env
