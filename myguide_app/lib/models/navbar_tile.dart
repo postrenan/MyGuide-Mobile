@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class NavBarTile {
-  static ListTile setTile(String name, BuildContext context, MaterialPageRoute route) {
+
+  static ListTile setTile(String name, String icon, BuildContext context, MaterialPageRoute route) {
+    const double iconSize = 45;
+
     return ListTile(
       title: Text(
         name,
@@ -11,8 +14,14 @@ class NavBarTile {
         )
       ),
       onTap: () {
+        Navigator.of(context).pop();
         Navigator.push(context, route);
-      }
+      },
+      leading: Image.asset(
+        'assets/images/icon_$icon.png',
+        width: iconSize,
+        height: iconSize
+      )
     );
   }
 }

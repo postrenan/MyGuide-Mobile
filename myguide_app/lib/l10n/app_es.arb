@@ -1,10 +1,58 @@
 {
 	"appSlogan": "Encuentre su próximo souvenir",
+	"emailValidate": "Email Inválido",
 	"passwordTxt": "Contraseña",
+	"passwordValidate": "Contraseña Incorrecta",
 	"passwordForgot": "¿Se olvidó la contraseña?",
 	"loginTxt": "Ingresar",
 	"askAccount": "¿No tiene una cuenta?",
 	"createAccount": "Cree una cuenta",
+	
+	"toastEmptyFields": "Hay campos vacíos",
+	"toastWrongPass": "Contraseña incorrecta",
+	"toastWrongEmail": "Usuario no encontrado",
+
+	"createAccountTitle": "CREAR CUENTA",
+	"addYourInfo": "Añada su información",
+	"createNameTxt": "Nombre",
+	"createUsernameTxt": "Nombre de Usuario",
+	"createPasswordTxt": "Contraseña",
+	"repeatPasswordTxt": "Repetir Contraseña",
+	"createBirthdayTxt": "Fecha de Nacimiento AAAA-MM-DD",
+	"roleTourist": "Turista",
+	"roleAdministrator": "Administrador",
+	"roleOwnerShop": "Dueño de Tienda",
+	"createRoleTxt": "Rol",
+	"createAccountBtn": "Crear Cuenta",
+  	"validationEnterName": "Por favor, ingrese su nombre",
+	"validationEnterUsername": "Por favor, ingrese su nombre de usuario",
+  	"validationEnterEmail": "Por favor, ingrese su correo electrónico",
+  	"validationValidEmail": "Ingrese un correo electrónico válido",
+  	"validationEnterPassword": "Por favor, ingrese su contraseña",
+  	"validationPasswordLength": "La contraseña debe tener al menos 6 caracteres",
+  	"validationRepeatPassword": "Por favor, repita su contraseña",
+  	"validationEnterBirthday": "Por favor, ingrese su fecha de nacimiento",
+  	"validationDateFormat": "Ingrese la fecha como AAAA-MM-DD",
+  	"validationSelectRole": "Por favor, seleccione un rol",
+	
+	"toastCreationSuccess": "Cuenta creada con éxito",
+	"toastErrorData": "Datos inválidos",
+	"toastErrorApi": "Se ha producido un error. Vuelva a intentarlo",
+
+	"shopDetailsTitle": "DETALLES DE TIENDA",
+	"locationTxt": "Ubicación",
+	"productsBtn": "Productos",
+	"reviewBtn": "Reseñar",
+
+	"shopProductsTitle": "Productos",
+	"shopProductsHeaderTxt": "Context",
+	"productNameTxt": "Nombre del Producto",
+
+	"shopReviewTitle": "Reseña",
+	"shopReviewsHeaderTxt": "Context",
+	"reviewTitleTxt": "Título de Reseña",
+	"reviewDescriptionTxt": "Descripción",
+	"ratingTxt": "Rating",
 
 	"passwordForgotTitle": "OLVIDÉ LA CONTRASEÑA",
 	"troubleTitle": "¿Problemas para Iniciar sesión?",
@@ -16,6 +64,7 @@
 	"categoriesTxt": "Categorias",
 	"categoriesMore": "Ver más...",
 	"featuredTxt": "Destacado",
+	"noShops": "No hay ninguna tienda registrada por el momento",
 	
 	"profileTile": "Perfil",
 	"shopTile": "Tiendas",
@@ -37,5 +86,9 @@
 	"langDefault": "Idioma del Sistema",
 	"langEnglish": "Inglés",
 	"langSpanish": "Español",
-	"langPortuguese": "Portugués"
+	"langPortuguese": "Portugués",
+
+	"aboutTxt": "Acerca de...",
+	"appTxt": "Aplicación Móvil",
+	"webTxt": "Página Web + Back-End"
 }

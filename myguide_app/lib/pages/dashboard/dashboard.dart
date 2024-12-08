@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../models/loading_model.dart';
 import '../../models/category_model.dart';
 import '../../models/myguide_appbar.dart';
 
 import '../categories/categories.dart';
+import '../shops/shop_details.dart';
 import 'navbar.dart';
 
 class Dashboard extends StatefulWidget {
@@ -14,34 +18,43 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  List<CategoryModel> categories = [];
-
-  void _getCategories() {
-    categories = CategoryModel.getCategories();
+  // Sobreescribir la inicialización del State
+  @override
+  void initState() {
+    super.initState();
+    
+    // Ejecución después de un frame para que cargue sin problemas las categorías por API
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      Provider.of<CategoryProvider>(context, listen: false).fetchCategories();
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    _getCategories();
     return Scaffold(
       endDrawer: const NavBar(),
       appBar: AppBarTitle.setTitle('MyGuide', lead: false),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // buscador
-          _searchField(),
-
-          const SizedBox(height: 40), // Separación
-          
-          // categorias
-          _categorySection(),
-
-          const SizedBox(height: 60),
-
-          // descatado
-          _featuredSection(context)
-        ]
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // buscador
+            _searchField(),
+        
+            const SizedBox(height: 40), // Separación
+            
+            // categorias
+            _categorySection(),
+        
+            const SizedBox(height: 60),
+        
+            // descatado
+            GestureDetector(
+              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const ShopDetails())),
+              child: _featuredSection(context)
+            )
+          ]
+        ),
       )
     );
   }
@@ -63,9 +76,15 @@ class _DashboardState extends State<Dashboard> {
           filled: true,
           fillColor: Theme.of(context).brightness == Brightness.light ? Colors.white : const Color(0xFF181818),
           contentPadding: const EdgeInsets.all(15),
-          
-          // icono
-          
+          prefixIcon: Padding(
+            padding: const EdgeInsets.all(12),
+            child: SvgPicture.asset(
+              'assets/svg/search.svg',
+              width: 20,
+              height: 20,
+              colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.light ? Colors.grey : Colors.white, BlendMode.srcIn)
+            ),
+          ),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(30),
             borderSide: BorderSide.none
@@ -77,6 +96,8 @@ class _DashboardState extends State<Dashboard> {
 
   // Contenedor Categorias
   Container _categorySection() {
+    var categoryProvider = Provider.of<CategoryProvider>(context);
+    
     return Container(
       margin: const EdgeInsets.only(left: 10, right: 10),
       decoration: BoxDecoration(
@@ -103,7 +124,7 @@ class _DashboardState extends State<Dashboard> {
 
                 TextButton(
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (_) => const Categories()));
+                    Navigator.push(context, MaterialPageRoute(builder: (_) => Categories()));
                   },
                   child: Text(
                     AppLocalizations.of(context)!.categoriesMore,
@@ -118,10 +139,21 @@ class _DashboardState extends State<Dashboard> {
           ),
 
           // categorias
-          const Row(
-            children: [
-              // iconos
-            ]
+          SizedBox(
+            width: MediaQuery.sizeOf(context).width - 50,
+            height: 90,
+            child: categoryProvider.loading | categoryProvider.categories.isEmpty
+            ? LoadingModel.set()
+            : ListView.builder(
+              itemCount: 4,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) {
+                return IconButton(
+                  onPressed: () => {},
+                  icon: Image.asset(categoryProvider.categories[index].image)
+                );
+              }
+            ),
           )
         ]
       ),
@@ -150,6 +182,34 @@ class _DashboardState extends State<Dashboard> {
                 fontWeight: FontWeight.bold
               )
             ),
+          ),
+
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Imagen
+              Container(
+                margin: const EdgeInsets.only(top: 10, left: 20),
+                width: MediaQuery.sizeOf(context).width - 60,
+                height: 200,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/shops/placeholder.jpg'),
+                    fit: BoxFit.cover
+                  )
+                )
+              ),
+          
+              // Descripción
+              Padding(
+                padding: const EdgeInsets.only(top: 5, left: 20),
+                child: Text(
+                  'No description available.',
+                  style: TextStyle(fontSize: 16),
+                  textAlign: TextAlign.left
+                )
+              )
+            ]
           )
         ]
       )

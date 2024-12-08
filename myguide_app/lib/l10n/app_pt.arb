@@ -1,10 +1,58 @@
 {
 	"appSlogan": "Encontre seu próximo souvenir",
+	"emailValidate": "Email Inválido",
 	"passwordTxt": "Senha",
+	"passwordValidate": "Senha Incorreta",
 	"passwordForgot": "Esqueceu sua senha?",
 	"loginTxt": "Iniciar sessão",
 	"askAccount": "Não tem uma conta?",
 	"createAccount": "Crie uma conta",
+	
+	"toastEmptyFields": "Há campos vazios",
+	"toastWrongPass": "Senha incorreta",
+	"toastWrongEmail": "Usuário não encontrado",
+
+	"createAccountTitle": "CRIE SUA CONTA",
+	"addYourInfo": "Adicione suas informações",
+	"createNameTxt": "Nome",
+	"createUsernameTxt": "Nome do usuário",
+	"createPasswordTxt": "Senha",
+	"repeatPasswordTxt": "Repita Sua Senha",
+	"createBirthdayTxt": "Data de Nascimento AAAA-MM-DD",
+	"roleTourist": "Turista",
+	"roleAdministrator": "Administrador",
+	"roleOwnerShop": "Proprietário da Loja",
+	"createRoleTxt": "Função",
+	"createAccountBtn": "Criar Conta",
+	"validationEnterName": "Digite seu nome",
+	"validationEnterUsername": "Digite seu nome de usuário",
+  	"validationEnterEmail": "Favor digitar seu endereço de e-mail",
+	"validationValidEmail": "Favor digitar um endereço de e-mail válido",
+  	"validationEnterPassword": "Digite sua senha",
+  	"validationPasswordLength": "A senha deve ter pelo menos 6 caracteres",
+  	"validationRepeatPassword": "Repita sua senha",
+  	"validationEnterBirthday": "Digite sua data de nascimento",
+  	"validationDateFormat": "Digite a data como AAAA-MM-DD",
+  	"validationSelectRole": "Favor selecionar uma função",
+	
+	"toastCreationSuccess": "Conta criada com êxito",
+	"toastErrorData": "Dados inválidos",
+	"toastErrorApi": "Ocorreu um erro. Por favor, tente novamente",
+
+	"shopDetailsTitle": "DETALHES DA LOJA",
+	"locationTxt": "Localização",
+	"productsBtn": "Produtos",
+	"reviewBtn": "Avaliação",
+
+	"shopProductsTitle": "Produtos",
+	"shopProductsHeaderTxt": "Context",
+	"productNameTxt": "Nome da Produto",
+
+	"shopReviewTitle": "Avaliação",
+	"shopReviewsHeaderTxt": "Context",
+	"reviewTitleTxt": "Título da Avaliação",
+	"reviewDescriptionTxt": "Descrição",
+	"ratingTxt": "Pontuação",
 
 	"passwordForgotTitle": "ESQUECEU A SENHA",
 	"troubleTitle": "Problemas para fazer o login?",
@@ -16,6 +64,7 @@
 	"categoriesTxt": "Categorias",
 	"categoriesMore": "Ver mais...",
 	"featuredTxt": "Em destaque",
+	"noShops": "Nenhuma loja registrada no momento",
 
 	"profileTile": "Perfil",
 	"shopTile": "Lojas",
@@ -37,5 +86,9 @@
 	"langDefault": "Idioma do sistema",
 	"langEnglish": "Inglês",
 	"langSpanish": "Espanhol",
-	"langPortuguese": "Português"
+	"langPortuguese": "Português",
+
+	"aboutTxt": "Sobre...",
+	"appTxt": "Aplicativo Móvel",
+	"webTxt": "Website + Back-End"
 }

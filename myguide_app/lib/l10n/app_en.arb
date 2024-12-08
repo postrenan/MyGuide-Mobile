@@ -1,10 +1,58 @@
 {
 	"appSlogan": "Find your next souvenir",
+	"emailValidate": "Invalid Email",
 	"passwordTxt": "Password",
+	"passwordValidate": "Incorrect Password",
 	"passwordForgot": "Forgot Password?",
 	"loginTxt": "Login",
 	"askAccount": "Don't have an account?",
 	"createAccount": "Create an account",
+	
+	"toastEmptyFields": "There are empty fields",
+	"toastWrongPass": "Wrong password",
+	"toastWrongEmail": "User not found",
+
+	"createAccountTitle": "CREATE YOUR ACCOUNT",
+	"addYourInfo": "Add your information",
+	"createNameTxt": "Name",
+	"createUsernameTxt": "Username",
+	"createPasswordTxt": "Password",
+	"repeatPasswordTxt": "Repeat Password",
+	"createBirthdayTxt": "Birthday YYYY-MM-DD",
+	"roleTourist": "Tourist",
+	"roleAdministrator": "Administrator",
+	"roleOwnerShop": "Owner Shop",
+	"createRoleTxt": "Role",
+	"createAccountBtn": "Create Account",
+	"validationEnterName": "Please enter your name",
+	"validationEnterUsername": "Please enter your username",
+  	"validationEnterEmail": "Please enter your email",
+  	"validationValidEmail": "Enter a valid email",
+  	"validationEnterPassword": "Please enter your password",
+  	"validationPasswordLength": "Password must be at least 6 characters",
+  	"validationRepeatPassword": "Please repeat your password",
+  	"validationEnterBirthday": "Please enter your birthday",
+  	"validationDateFormat": "Enter date as YYYY-MM-DD",
+  	"validationSelectRole": "Please select a role",
+
+	"toastCreationSuccess": "Account created successfuly",
+	"toastErrorData": "Invalid data",
+	"toastErrorApi": "An error occurred. Please try again",
+
+	"shopDetailsTitle": "SHOP DETAILS",
+	"locationTxt": "Location",
+	"productsBtn": "Products",
+	"reviewBtn": "Review It",
+
+	"shopProductsTitle": "Products",
+	"shopProductsHeaderTxt": "Context",
+	"productNameTxt": "Product Name",
+
+	"shopReviewTitle": "Review",
+	"shopReviewsHeaderTxt": "Context",
+	"reviewTitleTxt": "Review Title",
+	"reviewDescriptionTxt": "Description",
+	"ratingTxt": "Rating",
 
 	"passwordForgotTitle": "FORGOT PASSWORD",
 	"troubleTitle": "Trouble Logging in?",
@@ -16,6 +64,7 @@
 	"categoriesTxt": "Categories",
 	"categoriesMore": "See more...",
 	"featuredTxt": "Featured",
+	"noShops": "There are no registered stores at the moment",
 
 	"profileTile": "Profile",
 	"shopTile": "Shops",
@@ -37,5 +86,9 @@
 	"langDefault": "System's Language",
 	"langEnglish": "English",
 	"langSpanish": "Spanish",
-	"langPortuguese": "Portuguese"
+	"langPortuguese": "Portuguese",
+
+	"aboutTxt": "About",
+	"appTxt": "Mobile Application",
+	"webTxt": "Website + Back-End"
 }
