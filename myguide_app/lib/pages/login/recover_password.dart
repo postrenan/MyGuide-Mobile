@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../models/myguide_appbar.dart';
 
-import 'login.dart';
-
 class RecoverPassword extends StatelessWidget {
   const RecoverPassword({super.key});
 
@@ -104,10 +102,7 @@ class RecoverPassword extends StatelessWidget {
             width: double.infinity,
             padding: const EdgeInsets.symmetric(vertical: 10),
             child: TextButton(
-              onPressed: () {
-                Navigator.pushReplacement(
-                    context, MaterialPageRoute(builder: (_) => LoginScreen()));
-              },
+              onPressed: () => Navigator.pop(context), // Cerrar página
               child: Text(
                 AppLocalizations.of(context)!.returnBtn,
                 style: const TextStyle(color: Colors.white, fontSize: 20),
