@@ -145,13 +145,16 @@ class _DashboardState extends State<Dashboard> {
             child: categoryProvider.loading | categoryProvider.categories.isEmpty
             ? LoadingModel.set()
             : ListView.builder(
-              itemCount: 4,
+              itemCount: categoryProvider.categories.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
-                return IconButton(
-                  onPressed: () => {},
-                  icon: Image.asset(categoryProvider.categories[index].image)
-                );
+                if (index < 4) {
+                  return IconButton(
+                    onPressed: () => {},
+                    icon: Image.asset(categoryProvider.categories[index].image)
+                  );
+                }
+                return null;
               }
             ),
           )
@@ -201,8 +204,8 @@ class _DashboardState extends State<Dashboard> {
               ),
           
               // Descripción
-              Padding(
-                padding: const EdgeInsets.only(top: 5, left: 20),
+              const Padding(
+                padding: EdgeInsets.only(top: 5, left: 20),
                 child: Text(
                   'No description available.',
                   style: TextStyle(fontSize: 16),
