@@ -51,7 +51,10 @@ class _CategoriesState extends State<Categories> {
             children: List.generate(categoryProvider.categories.length, (index) {
               return IconButton(
                 onPressed: () => {},
-                icon: Image.asset(categoryProvider.categories[index].image)
+                icon: Image.asset(
+                  categoryProvider.categories[index].image,
+                  errorBuilder: (ctx, error, stackTrace) => Image.asset('assets/images/categories/icon_hide.png')
+                )
               );
             })
           )

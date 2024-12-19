@@ -151,7 +151,10 @@ class _DashboardState extends State<Dashboard> {
                 if (index < 4) {
                   return IconButton(
                     onPressed: () => {},
-                    icon: Image.asset(categoryProvider.categories[index].image)
+                    icon: Image.asset(
+                      categoryProvider.categories[index].image,
+                      errorBuilder: (ctx, error, stackTrace) => Image.asset('assets/images/categories/icon_hide.png')
+                    )
                   );
                 }
                 return null;
